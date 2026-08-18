@@ -1,0 +1,3588 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#6366f1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>CreatorHub — BYTE BY MATEEN</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ========== CSS VARIABLES ========== */
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --accent: #ec4899;
+  --accent-2: #f59e0b;
+  --gradient-hero: linear-gradient(135deg, #6366f1, #ec4899, #f59e0b);
+  --gradient-brand: linear-gradient(135deg, #6366f1, #ec4899);
+  --bg-app: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #f5f5f7;
+  --bg-header: rgba(255, 255, 255, 0.95);
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+  --bg-highlight: #fef3c7;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --border-focus: #6366f1;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.15);
+  --shadow-color: 0 8px 20px rgba(99, 102, 241, 0.25);
+  --youtube: #ff0000;
+  --tiktok: #000000;
+  --instagram-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  --facebook: #1877f2;
+  --chatgpt: #10a37f;
+  --claude: #d97757;
+  --gemini: #4285f4;
+  --grok: #1e40af;
+  --perplexity: #20808d;
+  --cat-idea: #f59e0b;
+  --cat-script: #6366f1;
+  --cat-thumbnail: #ec4899;
+  --cat-research: #06b6d4;
+  --cat-editing: #8b5cf6;
+  --cat-audio: #10b981;
+  --cat-hook: #ef4444;
+  --cat-style: #a855f7;
+  --status-idea: #94a3b8;
+  --status-scripting: #f59e0b;
+  --status-filming: #06b6d4;
+  --status-editing: #ec4899;
+  --status-ready: #10b981;
+  --status-posted: #22c55e;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-ui: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar-width: 240px;
+  --sidebar-collapsed: 72px;
+}
+
+[data-theme="dark"] {
+  --bg-app: #0f0f1a;
+  --bg-surface: #1a1a2e;
+  --bg-surface-2: #16213e;
+  --bg-header: rgba(15, 15, 26, 0.95);
+  --bg-card: #1e1e2e;
+  --bg-input: #2a2a3a;
+  --bg-highlight: #422006;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.15);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+  --tiktok: #ffffff;
+}
+
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-ui);
+  background: var(--bg-app);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow: hidden;
+  height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+a { color: var(--primary); text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font-ui); color: var(--text-primary); }
+input, textarea, select {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  outline: none;
+  transition: border var(--transition), box-shadow var(--transition);
+  width: 100%;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+}
+textarea { resize: vertical; min-height: 80px; }
+select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ========== APP LAYOUT ========== */
+.app-layout { display: flex; height: 100vh; width: 100vw; }
+
+/* ========== HEADER ========== */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 100;
+  background: var(--bg-header); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 20px; gap: 16px;
+  transition: background var(--transition);
+}
+.header-left { display: flex; align-items: center; gap: 12px; min-width: 200px; }
+.menu-toggle { display: none; font-size: 20px; padding: 8px; border-radius: var(--radius-sm); }
+.menu-toggle:hover { background: var(--bg-surface-2); }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+.logo-icon {
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--gradient-brand); display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 16px; font-weight: 700;
+}
+.logo-text { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header-center { flex: 1; max-width: 500px; margin: 0 auto; }
+.search-box {
+  position: relative; display: flex; align-items: center;
+  background: var(--bg-surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-full); padding: 0 16px; transition: all var(--transition);
+}
+.search-box:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99,102,241,0.1); background: var(--bg-surface); }
+.search-box i { color: var(--text-muted); font-size: 14px; }
+.search-box input { border: none; background: transparent; padding: 8px 12px; font-size: 14px; }
+.search-box input:focus { box-shadow: none; }
+.search-shortcut { font-size: 11px; color: var(--text-muted); background: var(--bg-surface); border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); white-space: nowrap; }
+.header-right { display: flex; align-items: center; gap: 8px; }
+.header-btn {
+  width: 38px; height: 38px; border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: all var(--transition); position: relative;
+}
+.header-btn:hover { background: var(--bg-surface-2); }
+.streak-badge {
+  display: flex; align-items: center; gap: 4px; padding: 4px 12px;
+  background: var(--bg-highlight); border-radius: var(--radius-full);
+  font-size: 13px; font-weight: 600; color: var(--accent-2);
+}
+.streak-badge .fire { animation: flamePulse 1s infinite; }
+@keyframes flamePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  position: fixed; top: 60px; left: 0; bottom: 0;
+  width: var(--sidebar-width); background: var(--bg-surface);
+  border-right: 1px solid var(--border); z-index: 90;
+  display: flex; flex-direction: column;
+  transition: width var(--transition-slow), transform var(--transition-slow);
+  overflow: hidden;
+}
+.sidebar.collapsed { width: var(--sidebar-collapsed); }
+.sidebar-nav { flex: 1; padding: 12px 8px; overflow-y: auto; }
+.nav-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 500; color: var(--text-secondary);
+  transition: all var(--transition); cursor: pointer; white-space: nowrap;
+  margin-bottom: 2px;
+}
+.nav-item:hover { background: var(--bg-surface-2); color: var(--text-primary); }
+.nav-item.active { background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.05)); color: var(--primary); font-weight: 600; }
+.nav-item i { width: 20px; text-align: center; font-size: 16px; flex-shrink: 0; }
+.nav-item .nav-label { overflow: hidden; text-overflow: ellipsis; }
+.sidebar.collapsed .nav-label { display: none; }
+.sidebar-footer {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sidebar-brand { font-size: 11px; color: var(--text-muted); text-align: center; font-weight: 500; }
+.sidebar.collapsed .sidebar-brand { display: none; }
+.collapse-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 8px; border-radius: var(--radius-sm); font-size: 13px;
+  color: var(--text-muted); transition: all var(--transition);
+}
+.collapse-btn:hover { background: var(--bg-surface-2); color: var(--text-primary); }
+.sidebar.collapsed .collapse-text { display: none; }
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+  flex: 1; margin-left: var(--sidebar-width); margin-top: 60px;
+  height: calc(100vh - 60px); overflow-y: auto;
+  padding: 24px; transition: margin-left var(--transition-slow);
+}
+.sidebar.collapsed ~ .main-content { margin-left: var(--sidebar-collapsed); }
+
+/* ========== SECTION HEADER ========== */
+.section-header { margin-bottom: 24px; }
+.section-header h1 { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.section-header p { color: var(--text-secondary); font-size: 14px; }
+
+/* ========== CARDS ========== */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px;
+  box-shadow: var(--shadow-sm); transition: all var(--transition);
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.cards-grid-sm { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 500;
+  transition: all var(--transition); white-space: nowrap;
+}
+.btn-primary { background: var(--gradient-brand); color: white; }
+.btn-primary:hover { opacity: 0.9; box-shadow: var(--shadow-color); }
+.btn-secondary { background: var(--bg-surface); border: 1px solid var(--border); color: var(--text-primary); }
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+.btn-ghost { color: var(--text-secondary); padding: 8px 12px; }
+.btn-ghost:hover { background: var(--bg-surface-2); color: var(--text-primary); }
+.btn-danger { background: var(--error); color: white; }
+.btn-danger:hover { opacity: 0.9; }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+.btn-icon { width: 36px; height: 36px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); }
+
+/* ========== FLOATING ACTION BUTTON ========== */
+.fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 80;
+  width: 56px; height: 56px; border-radius: var(--radius-full);
+  background: var(--gradient-brand); color: white; font-size: 24px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-color); transition: all var(--transition);
+}
+.fab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(99,102,241,0.4); }
+
+/* ========== BADGES ========== */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: var(--radius-full);
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.badge-platform { color: white; }
+.badge-chatgpt { background: var(--chatgpt); }
+.badge-claude { background: var(--claude); }
+.badge-gemini { background: var(--gemini); }
+.badge-grok { background: var(--grok); }
+.badge-perplexity { background: #20808d; }
+.badge-youtube { background: var(--youtube); }
+.badge-tiktok { background: var(--tiktok); }
+.badge-instagram { background: #e4405f; }
+.badge-facebook { background: var(--facebook); }
+.badge-vimeo { background: #1ab7ea; }
+.badge-category { background: var(--bg-surface-2); color: var(--text-secondary); }
+.badge-status { font-size: 11px; }
+
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.status-idea { background: var(--status-idea); }
+.status-scripting { background: var(--status-scripting); }
+.status-filming { background: var(--status-filming); }
+.status-editing { background: var(--status-editing); }
+.status-ready { background: var(--status-ready); }
+.status-posted { background: var(--status-posted); }
+
+/* ========== FILTER BAR ========== */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.filter-chip {
+  padding: 6px 14px; border-radius: var(--radius-full);
+  font-size: 12px; font-weight: 500; border: 1px solid var(--border);
+  background: var(--bg-surface); color: var(--text-secondary);
+  transition: all var(--transition); cursor: pointer;
+}
+.filter-chip:hover { border-color: var(--primary); color: var(--primary); }
+.filter-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* ========== MODAL ========== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all var(--transition);
+  padding: 20px;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal {
+  background: var(--bg-surface); border-radius: var(--radius-xl);
+  width: 100%; max-width: 600px; max-height: 90vh;
+  overflow-y: auto; box-shadow: var(--shadow-lg);
+  transform: translateY(20px); transition: transform var(--transition-slow);
+}
+.modal-overlay.active .modal { transform: translateY(0); }
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--bg-surface); z-index: 1;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.modal-header h2 { font-family: var(--font-display); font-size: 18px; font-weight: 700; }
+.modal-close { width: 32px; height: 32px; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all var(--transition); }
+.modal-close:hover { background: var(--bg-surface-2); }
+.modal-body { padding: 24px; }
+.modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 12px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-secondary); }
+.form-group .helper { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+.platform-detected { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-full); font-size: 12px; font-weight: 500; margin-top: 4px; }
+.checkbox-group { display: flex; flex-wrap: wrap; gap: 12px; }
+.checkbox-item { display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; }
+.checkbox-item input[type="checkbox"] { width: 16px; height: auto; accent-color: var(--primary); }
+
+/* ========== FULLVIEW MODAL ========== */
+.fullview-overlay {
+  position: fixed; inset: 0; z-index: 250;
+  background: var(--bg-app); overflow-y: auto;
+  opacity: 0; visibility: hidden; transition: all var(--transition);
+}
+.fullview-overlay.active { opacity: 1; visibility: visible; }
+.fullview-header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; background: var(--bg-header); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.fullview-header h2 { font-family: var(--font-display); font-size: 20px; font-weight: 700; flex: 1; margin: 0 16px; }
+.fullview-body { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+.fullview-meta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.fullview-content {
+  font-family: var(--font-mono); line-height: 1.8;
+  white-space: pre-wrap; word-break: break-word;
+}
+.fullview-content.font-sm { font-size: 14px; }
+.fullview-content.font-md { font-size: 17px; }
+.fullview-content.font-lg { font-size: 22px; }
+.fullview-footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 12px; }
+.reader-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+
+/* ========== TOAST ========== */
+.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 20px; border-radius: var(--radius-md);
+  background: var(--bg-card); border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg); font-size: 13px; font-weight: 500;
+  animation: toastIn 0.3s ease-out;
+  min-width: 280px;
+}
+.toast.success { border-left: 4px solid var(--success); }
+.toast.error { border-left: 4px solid var(--error); }
+.toast.info { border-left: 4px solid var(--info); }
+@keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes toastOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+
+/* ========== SEARCH RESULTS ========== */
+.search-results {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--bg-surface); border: 1px solid var(--border);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+  max-height: 400px; overflow-y: auto; margin-top: 4px; display: none;
+}
+.search-results.active { display: block; }
+.search-group-title { padding: 8px 16px; font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; background: var(--bg-surface-2); }
+.search-result-item { padding: 10px 16px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
+.search-result-item:hover { background: var(--bg-surface-2); }
+
+/* ========== DASHBOARD ========== */
+.welcome-section {
+  background: var(--gradient-hero); border-radius: var(--radius-xl);
+  padding: 32px; color: white; margin-bottom: 24px; position: relative; overflow: hidden;
+}
+.welcome-section::after {
+  content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px;
+  background: rgba(255,255,255,0.1); border-radius: 50%;
+}
+.welcome-section h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 4px; position: relative; z-index: 1; }
+.welcome-section p { opacity: 0.9; font-size: 15px; position: relative; z-index: 1; }
+.welcome-streak { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: var(--radius-full); margin-top: 12px; font-weight: 600; font-size: 14px; position: relative; z-index: 1; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 16px;
+  display: flex; align-items: center; gap: 12px;
+  transition: all var(--transition);
+}
+.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); cursor: pointer; }
+.stat-icon { width: 42px; height: 42px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.stat-info .stat-number { font-family: var(--font-display); font-size: 22px; font-weight: 700; line-height: 1; }
+.stat-info .stat-label { font-size: 12px; color: var(--text-muted); }
+.quick-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.quick-action-btn {
+  display: flex; align-items: center; gap: 8px; padding: 10px 18px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-full); font-size: 13px; font-weight: 500;
+  transition: all var(--transition);
+}
+.quick-action-btn:hover { border-color: var(--primary); color: var(--primary); box-shadow: var(--shadow-sm); }
+.dashboard-section { margin-bottom: 24px; }
+.dashboard-section h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.activity-feed { display: flex; flex-direction: column; gap: 8px; }
+.activity-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 13px;
+}
+.activity-item .activity-icon { width: 32px; height: 32px; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.activity-item .activity-time { font-size: 11px; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
+
+/* ========== CONTENT CALENDAR ========== */
+.calendar-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.calendar-nav { display: flex; align-items: center; gap: 12px; }
+.calendar-nav h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; min-width: 200px; }
+.view-toggle { display: flex; background: var(--bg-surface-2); border-radius: var(--radius-full); overflow: hidden; }
+.view-toggle button { padding: 6px 16px; font-size: 12px; font-weight: 500; transition: all var(--transition); display: flex; align-items: center; gap: 6px; }
+.view-toggle button.active { background: var(--primary); color: white; border-radius: var(--radius-full); }
+
+/* ========== WEEKLY PLAN ========== */
+.weekly-plan-container { padding: 0; }
+.weekly-plan-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+}
+.weekly-plan-header h2 {
+  font-family: var(--font-display); font-size: 20px; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
+.weekly-plan-header h2 i { color: var(--primary); }
+.weekly-plan-header p { color: var(--text-secondary); font-size: 13px; margin-top: 2px; }
+
+/* Current Week Plan Card */
+.weekly-plan-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); overflow: hidden;
+  box-shadow: var(--shadow-sm); margin-bottom: 24px;
+  transition: all var(--transition);
+}
+.weekly-plan-card:hover { box-shadow: var(--shadow-md); }
+.weekly-plan-card-strip {
+  height: 6px; width: 100%;
+  background: var(--gradient-brand);
+}
+.weekly-plan-card-header {
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.weekly-plan-card-title {
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
+.weekly-plan-card-title i { color: var(--primary); }
+.weekly-plan-card-subtitle {
+  font-size: 13px; color: var(--text-muted); margin-top: 4px;
+}
+.weekly-plan-card-meta {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+}
+.weekly-plan-priority {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 12px; border-radius: var(--radius-full);
+  font-size: 11px; font-weight: 600;
+}
+.weekly-plan-priority.high { background: rgba(239,68,68,0.15); color: var(--error); }
+.weekly-plan-priority.medium { background: rgba(245,158,11,0.15); color: var(--warning); }
+.weekly-plan-priority.low { background: rgba(16,185,129,0.15); color: var(--success); }
+.weekly-plan-tag {
+  padding: 3px 10px; border-radius: var(--radius-full);
+  font-size: 11px; font-weight: 500;
+  background: var(--bg-surface-2); color: var(--text-secondary);
+}
+.weekly-plan-card-body {
+  padding: 24px;
+}
+.weekly-plan-content {
+  font-family: var(--font-mono); font-size: 15px; line-height: 1.8;
+  white-space: pre-wrap; word-break: break-word;
+  color: var(--text-primary);
+}
+.weekly-plan-content.font-sm { font-size: 14px; line-height: 1.7; }
+.weekly-plan-content.font-md { font-size: 16px; line-height: 1.8; }
+.weekly-plan-content.font-lg { font-size: 18px; line-height: 1.9; }
+.weekly-plan-card-footer {
+  padding: 16px 24px; border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+}
+.weekly-plan-card-footer .footer-left { display: flex; flex-wrap: wrap; gap: 8px; }
+.weekly-plan-card-footer .footer-right { font-size: 11px; color: var(--text-muted); }
+
+/* Archive Section */
+.weekly-plan-archive { margin-top: 32px; }
+.weekly-plan-archive h3 {
+  font-family: var(--font-display); font-size: 16px; font-weight: 600;
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+  color: var(--text-secondary);
+}
+.weekly-plan-archive h3 i { color: var(--text-muted); }
+.archive-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;
+}
+.archive-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 16px;
+  cursor: pointer; transition: all var(--transition);
+}
+.archive-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--primary); }
+.archive-card-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
+}
+.archive-card-date { font-family: var(--font-display); font-size: 14px; font-weight: 600; }
+.archive-card-title { font-size: 12px; color: var(--primary); font-weight: 500; margin-bottom: 8px; }
+.archive-card-preview {
+  font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.archive-card-footer { margin-top: 10px; font-size: 11px; color: var(--text-muted); }
+
+/* Empty State */
+.weekly-plan-empty {
+  text-align: center; padding: 60px 20px;
+  background: var(--bg-card); border: 2px dashed var(--border);
+  border-radius: var(--radius-xl);
+}
+.weekly-plan-empty .empty-icon {
+  width: 80px; height: 80px; margin: 0 auto 20px;
+  background: var(--gradient-brand); border-radius: var(--radius-lg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; color: white;
+}
+.weekly-plan-empty h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 8px; }
+.weekly-plan-empty p { color: var(--text-muted); margin-bottom: 20px; max-width: 400px; margin-left: auto; margin-right: auto; font-size: 14px; }
+
+/* Weekly Plan Modal */
+.week-selector {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+}
+.week-selector select {
+  flex: 1; min-width: 150px;
+}
+.char-counter {
+  font-size: 11px; color: var(--text-muted); text-align: right; margin-top: 4px;
+}
+.priority-selector {
+  display: flex; gap: 8px;
+}
+.priority-btn {
+  padding: 8px 16px; border-radius: var(--radius-full);
+  font-size: 12px; font-weight: 500; border: 1px solid var(--border);
+  background: var(--bg-surface); color: var(--text-secondary);
+  transition: all var(--transition); cursor: pointer;
+}
+.priority-btn:hover { border-color: var(--primary); color: var(--primary); }
+.priority-btn.active.high { background: rgba(239,68,68,0.15); color: var(--error); border-color: var(--error); }
+.priority-btn.active.medium { background: rgba(245,158,11,0.15); color: var(--warning); border-color: var(--warning); }
+.priority-btn.active.low { background: rgba(16,185,129,0.15); color: var(--success); border-color: var(--success); }
+
+/* Convert Ideas Modal */
+.convert-ideas-list { margin: 16px 0; }
+.convert-idea-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; background: var(--bg-surface-2);
+  border-radius: var(--radius-sm); margin-bottom: 8px;
+}
+.convert-idea-item input[type="checkbox"] { margin-top: 2px; accent-color: var(--primary); }
+.convert-idea-item label { font-size: 13px; flex: 1; cursor: pointer; }
+
+@media (max-width: 768px) {
+  .weekly-plan-card-body { padding: 16px; }
+  .weekly-plan-content { font-size: 14px; }
+  .archive-grid { grid-template-columns: 1fr; }
+}
+.weekly-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+.day-column { min-height: 200px; }
+.day-header { text-align: center; padding: 8px; font-size: 12px; font-weight: 600; color: var(--text-muted); }
+.day-header .day-num { font-size: 20px; font-family: var(--font-display); color: var(--text-primary); display: block; }
+.day-header.today .day-num { background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; }
+.day-body { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px; min-height: 150px; }
+.day-content-chip {
+  padding: 6px 10px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 500;
+  margin-bottom: 4px; cursor: pointer; border-left: 3px solid var(--primary);
+  background: var(--bg-surface-2); transition: all var(--transition);
+}
+.day-content-chip:hover { background: rgba(99,102,241,0.1); }
+.day-add-btn { width: 100%; padding: 6px; font-size: 18px; color: var(--text-muted); border-radius: var(--radius-sm); margin-top: 4px; transition: all var(--transition); }
+.day-add-btn:hover { background: var(--bg-surface-2); color: var(--primary); }
+
+/* ========== KANBAN ========== */
+.kanban-board { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 16px; height: calc(100vh - 220px); }
+.kanban-column { min-width: 250px; flex: 1; background: var(--bg-surface-2); border-radius: var(--radius-md); display: flex; flex-direction: column; }
+.kanban-column-header { padding: 12px 16px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
+.kanban-column-header .count { background: var(--bg-surface); padding: 2px 8px; border-radius: var(--radius-full); font-size: 11px; }
+.kanban-column-body { flex: 1; padding: 8px; overflow-y: auto; min-height: 100px; }
+.kanban-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px; margin-bottom: 8px;
+  cursor: grab; transition: all var(--transition);
+}
+.kanban-card:active { cursor: grabbing; }
+.kanban-card:hover { box-shadow: var(--shadow-md); }
+.kanban-card.dragging { opacity: 0.5; transform: rotate(2deg); }
+.kanban-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.kanban-card .kanban-meta { font-size: 11px; color: var(--text-muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.kanban-add-btn { padding: 8px; text-align: center; color: var(--text-muted); font-size: 13px; cursor: pointer; border-radius: var(--radius-sm); margin: 8px; }
+.kanban-add-btn:hover { background: var(--bg-surface); color: var(--primary); }
+.kanban-column.drag-over { background: rgba(99,102,241,0.05); border: 2px dashed var(--primary); }
+
+/* ========== VOICE NOTES ========== */
+.record-section { text-align: center; padding: 40px 20px; margin-bottom: 24px; }
+.record-btn {
+  width: 100px; height: 100px; border-radius: 50%;
+  background: var(--error); color: white; font-size: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: all var(--transition); box-shadow: 0 4px 20px rgba(239,68,68,0.3);
+}
+.record-btn:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(239,68,68,0.4); }
+.record-btn.recording { animation: recordPulse 1.5s infinite; background: #dc2626; }
+@keyframes recordPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); } 50% { box-shadow: 0 0 0 20px rgba(239,68,68,0); } }
+.record-timer { font-family: var(--font-mono); font-size: 24px; margin-top: 16px; color: var(--text-secondary); }
+.voice-card { display: flex; align-items: center; gap: 16px; }
+.voice-play-btn { width: 42px; height: 42px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; transition: all var(--transition); }
+.voice-play-btn:hover { opacity: 0.9; }
+.voice-info { flex: 1; }
+.voice-info h4 { font-size: 14px; font-weight: 600; }
+.voice-info .voice-meta { font-size: 12px; color: var(--text-muted); }
+.voice-actions { display: flex; gap: 8px; }
+
+/* ========== INSPIRATION BOARD ========== */
+.masonry-grid { columns: 3; column-gap: 16px; }
+.masonry-item { break-inside: avoid; margin-bottom: 16px; }
+.masonry-item .card { padding: 0; overflow: hidden; }
+.masonry-item img { width: 100%; display: block; cursor: pointer; }
+.masonry-item .masonry-info { padding: 12px; }
+.masonry-item .masonry-info h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.masonry-item .masonry-info p { font-size: 12px; color: var(--text-muted); }
+
+/* ========== SETTINGS ========== */
+.settings-section { margin-bottom: 24px; }
+.settings-section h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.setting-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.setting-row:last-child { border-bottom: none; }
+.setting-label { font-size: 14px; font-weight: 500; }
+.setting-desc { font-size: 12px; color: var(--text-muted); }
+.toggle-switch { position: relative; width: 44px; height: 24px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; inset: 0; background: var(--border); border-radius: 12px;
+  cursor: pointer; transition: all var(--transition);
+}
+.toggle-slider::before {
+  content: ''; position: absolute; left: 2px; top: 2px;
+  width: 20px; height: 20px; border-radius: 50%; background: white;
+  transition: all var(--transition); box-shadow: var(--shadow-sm);
+}
+.toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* ========== EMPTY STATE ========== */
+.empty-state { text-align: center; padding: 60px 20px; }
+.empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
+.empty-state h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 8px; }
+.empty-state p { color: var(--text-muted); margin-bottom: 20px; font-size: 14px; }
+
+/* ========== CONFIRM DIALOG ========== */
+.confirm-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all var(--transition);
+}
+.confirm-overlay.active { opacity: 1; visibility: visible; }
+.confirm-box {
+  background: var(--bg-surface); border-radius: var(--radius-lg);
+  padding: 24px; width: 90%; max-width: 400px; text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.confirm-box h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 8px; }
+.confirm-box p { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; }
+.confirm-actions { display: flex; gap: 12px; justify-content: center; }
+
+/* ========== PREMIUM AI CHAT TILES ========== */
+.chats-section-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px; margin-bottom: 24px;
+}
+.chats-section-header .title-area h1 {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  margin-bottom: 4px; display: flex; align-items: center; gap: 12px;
+}
+.chats-section-header .title-area p { color: var(--text-secondary); font-size: 14px; }
+
+.chats-toolbar {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 16px 20px;
+  margin-bottom: 20px; display: flex; flex-direction: column; gap: 16px;
+}
+.chats-search-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.chats-search-input {
+  flex: 1; min-width: 200px; display: flex; align-items: center; gap: 10px;
+  background: var(--bg-surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-full); padding: 0 16px;
+}
+.chats-search-input i { color: var(--text-muted); }
+.chats-search-input input { border: none; background: transparent; padding: 10px 0; flex: 1; }
+.chats-search-input input:focus { box-shadow: none; }
+.sort-select {
+  width: auto; min-width: 150px; padding: 10px 36px 10px 14px;
+  background: var(--bg-surface); border-radius: var(--radius-full);
+}
+.view-size-toggle {
+  display: flex; background: var(--bg-surface-2); border-radius: var(--radius-full); overflow: hidden;
+}
+.view-size-toggle button {
+  padding: 8px 14px; font-size: 12px; font-weight: 500;
+  transition: all var(--transition); display: flex; align-items: center; gap: 6px;
+}
+.view-size-toggle button.active { background: var(--primary); color: white; }
+.view-size-toggle button i { font-size: 11px; }
+
+/* Chat Tiles Grid */
+.chats-grid {
+  display: grid; gap: 20px; transition: all var(--transition-slow);
+}
+.chats-grid.view-large { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.chats-grid.view-medium { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.chats-grid.view-compact { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.chats-grid.view-list { grid-template-columns: 1fr; }
+
+/* Pinned Section */
+.pinned-section { margin-bottom: 24px; }
+.pinned-header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+  font-size: 13px; font-weight: 600; color: var(--accent-2);
+}
+.pinned-header i { font-size: 14px; }
+.pinned-divider {
+  display: flex; align-items: center; gap: 12px; margin: 24px 0 20px;
+  font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
+}
+.pinned-divider::before, .pinned-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* Premium Chat Tile */
+.chat-tile {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: all var(--transition);
+  position: relative; cursor: pointer;
+}
+.chat-tile:hover {
+  box-shadow: var(--shadow-lg); transform: translateY(-4px);
+}
+.chat-tile:hover .chat-tile-strip { height: 6px; }
+.chat-tile:hover .chat-tile-icon-wrap { transform: scale(1.05); }
+
+/* Platform Color Strip */
+.chat-tile-strip {
+  height: 4px; width: 100%; transition: height var(--transition);
+}
+.chat-tile-strip.chatgpt { background: linear-gradient(135deg, #10a37f, #059669); }
+.chat-tile-strip.claude { background: linear-gradient(135deg, #d97757, #b45309); }
+.chat-tile-strip.grok { background: linear-gradient(135deg, #1e40af, #1e3a8a); }
+.chat-tile-strip.gemini { background: linear-gradient(135deg, #4285f4, #8b5cf6, #ec4899); }
+.chat-tile-strip.perplexity { background: linear-gradient(135deg, #20808d, #0d9488); }
+.chat-tile-strip.other { background: var(--gradient-brand); }
+
+/* Tile Body */
+.chat-tile-body { padding: 20px; }
+.chat-tile-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+
+/* Icon Container */
+.chat-tile-icon-wrap {
+  width: 64px; height: 64px; border-radius: var(--radius-md);
+  background: var(--bg-surface-2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; flex-shrink: 0; transition: transform var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+.chat-tile-icon-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.chat-tile-icon-wrap .icon-fallback {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700; color: white;
+}
+.chat-tile-icon-wrap .icon-fallback.chatgpt { background: linear-gradient(135deg, #10a37f, #059669); }
+.chat-tile-icon-wrap .icon-fallback.claude { background: linear-gradient(135deg, #d97757, #b45309); }
+.chat-tile-icon-wrap .icon-fallback.grok { background: linear-gradient(135deg, #1e40af, #1e3a8a); }
+.chat-tile-icon-wrap .icon-fallback.gemini { background: linear-gradient(135deg, #4285f4, #8b5cf6); }
+.chat-tile-icon-wrap .icon-fallback.perplexity { background: linear-gradient(135deg, #20808d, #0d9488); }
+.chat-tile-icon-wrap .icon-fallback.other { background: var(--gradient-brand); }
+
+/* Compact view icon */
+.chats-grid.view-compact .chat-tile-icon-wrap { width: 40px; height: 40px; }
+.chats-grid.view-compact .chat-tile-icon-wrap .icon-fallback { font-size: 18px; }
+.chats-grid.view-medium .chat-tile-icon-wrap { width: 52px; height: 52px; }
+.chats-grid.view-medium .chat-tile-icon-wrap .icon-fallback { font-size: 22px; }
+
+/* Title Area */
+.chat-tile-info { flex: 1; min-width: 0; }
+.chat-tile-title {
+  font-family: var(--font-display); font-size: 16px; font-weight: 700;
+  margin-bottom: 4px; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.chat-tile-domain {
+  font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 4px;
+}
+.chat-tile-domain i { font-size: 10px; }
+
+/* Pin & Favorite Buttons */
+.chat-tile-actions-top {
+  position: absolute; top: 12px; right: 12px;
+  display: flex; gap: 6px; z-index: 5;
+}
+.chat-tile-actions-top button {
+  width: 28px; height: 28px; border-radius: var(--radius-full);
+  background: var(--bg-surface); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--text-muted);
+  transition: all var(--transition); opacity: 0;
+}
+.chat-tile:hover .chat-tile-actions-top button { opacity: 1; }
+.chat-tile-actions-top button:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.chat-tile-actions-top button.pinned { opacity: 1; color: var(--accent-2); }
+.chat-tile-actions-top button.favorited { opacity: 1; color: var(--error); }
+
+/* Description */
+.chat-tile-description {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+  margin-bottom: 14px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.chats-grid.view-compact .chat-tile-description { display: none; }
+
+/* Category Badge */
+.chat-tile-category {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: var(--radius-full);
+  font-size: 11px; font-weight: 600; margin-bottom: 12px;
+}
+.chat-tile-category.thumbnail { background: rgba(236,72,153,0.15); color: var(--cat-thumbnail); }
+.chat-tile-category.script { background: rgba(99,102,241,0.15); color: var(--cat-script); }
+.chat-tile-category.idea { background: rgba(245,158,11,0.15); color: var(--cat-idea); }
+.chat-tile-category.research { background: rgba(6,182,212,0.15); color: var(--cat-research); }
+.chat-tile-category.editing { background: rgba(139,92,246,0.15); color: var(--cat-editing); }
+.chat-tile-category.audio { background: rgba(16,185,129,0.15); color: var(--cat-audio); }
+.chat-tile-category.analytics { background: rgba(59,130,246,0.15); color: var(--info); }
+.chat-tile-category.other { background: var(--bg-surface-2); color: var(--text-muted); }
+.chats-grid.view-compact .chat-tile-category { display: none; }
+
+/* Meta Info */
+.chat-tile-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--text-muted);
+  padding-top: 12px; border-top: 1px solid var(--border); margin-top: auto;
+}
+.chat-tile-meta span { display: flex; align-items: center; gap: 4px; }
+.chats-grid.view-compact .chat-tile-meta { padding-top: 8px; gap: 8px; }
+.chats-grid.view-compact .chat-tile-body { padding: 14px; }
+
+/* Actions Footer */
+.chat-tile-footer {
+  display: flex; gap: 8px; margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.chat-tile-footer .btn { flex: 1; justify-content: center; }
+.chats-grid.view-compact .chat-tile-footer { display: none; }
+.chats-grid.view-medium .chat-tile-footer .btn span { display: none; }
+
+/* List View Specific */
+.chats-grid.view-list .chat-tile { display: flex; align-items: center; }
+.chats-grid.view-list .chat-tile-strip { width: 4px; height: 100%; position: absolute; left: 0; top: 0; }
+.chats-grid.view-list .chat-tile-body {
+  display: flex; align-items: center; gap: 16px; padding: 16px 20px; padding-left: 24px; flex: 1;
+}
+.chats-grid.view-list .chat-tile-header { margin-bottom: 0; flex: 1; }
+.chats-grid.view-list .chat-tile-icon-wrap { width: 48px; height: 48px; }
+.chats-grid.view-list .chat-tile-description { display: none; }
+.chats-grid.view-list .chat-tile-category { margin-bottom: 0; }
+.chats-grid.view-list .chat-tile-meta { border-top: none; padding-top: 0; margin-top: 0; }
+.chats-grid.view-list .chat-tile-footer {
+  display: flex; border-top: none; margin-top: 0; padding-top: 0; padding-right: 8px;
+}
+.chats-grid.view-list .chat-tile-actions-top { position: static; opacity: 1; }
+
+/* Glow effect on hover */
+.chat-tile.chatgpt:hover { box-shadow: 0 8px 30px rgba(16,163,127,0.2); }
+.chat-tile.claude:hover { box-shadow: 0 8px 30px rgba(217,119,87,0.2); }
+.chat-tile.grok:hover { box-shadow: 0 8px 30px rgba(30,64,175,0.2); }
+.chat-tile.gemini:hover { box-shadow: 0 8px 30px rgba(66,133,244,0.2); }
+.chat-tile.perplexity:hover { box-shadow: 0 8px 30px rgba(32,128,141,0.2); }
+
+/* Empty State Enhanced */
+.chats-empty-state {
+  text-align: center; padding: 80px 40px;
+  background: var(--bg-card); border: 2px dashed var(--border);
+  border-radius: var(--radius-xl);
+}
+.chats-empty-state .empty-icon {
+  width: 100px; height: 100px; margin: 0 auto 24px;
+  background: var(--gradient-brand); border-radius: var(--radius-xl);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; color: white;
+}
+.chats-empty-state h3 { font-family: var(--font-display); font-size: 22px; margin-bottom: 8px; }
+.chats-empty-state p { color: var(--text-muted); margin-bottom: 24px; max-width: 400px; margin-left: auto; margin-right: auto; }
+
+/* Icon Preview in Modal */
+.icon-preview-container {
+  display: flex; align-items: center; gap: 16px; padding: 16px;
+  background: var(--bg-surface-2); border-radius: var(--radius-md);
+  margin-top: 8px;
+}
+.icon-preview {
+  width: 64px; height: 64px; border-radius: var(--radius-md);
+  background: var(--bg-card); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.icon-preview img { width: 100%; height: 100%; object-fit: cover; }
+.icon-preview .fallback { font-size: 28px; }
+.icon-preview-info { flex: 1; }
+.icon-preview-info .source { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+.icon-preview-info .source i { color: var(--success); }
+
+/* Dashboard Recent Chats */
+.dashboard-chats-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;
+}
+
+/* ========== VIDEO CARD ========== */
+.video-card .video-thumbnail { width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-sm); background: var(--bg-surface-2); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; overflow: hidden; position: relative; cursor: pointer; }
+.video-card .video-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+.video-card .video-thumbnail .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity var(--transition); }
+.video-card .video-thumbnail:hover .play-overlay { opacity: 1; }
+.video-card .video-thumbnail .play-overlay i { font-size: 36px; color: white; }
+
+/* ========== IDEA CARD ========== */
+.idea-card .idea-text { font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+.idea-card .idea-footer { display: flex; align-items: center; justify-content: space-between; }
+.idea-status-btn { padding: 4px 10px; border-radius: var(--radius-full); font-size: 11px; font-weight: 600; cursor: pointer; transition: all var(--transition); }
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .chats-grid.view-large { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+@media (max-width: 768px) {
+  .header-left { min-width: auto; }
+  .logo-text { display: none; }
+  .search-shortcut { display: none; }
+  .header-center { max-width: none; }
+  .menu-toggle { display: flex; }
+  .sidebar { transform: translateX(-100%); width: var(--sidebar-width); z-index: 150; }
+  .sidebar.mobile-open { transform: translateX(0); }
+  .main-content { margin-left: 0 !important; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid-sm { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .weekly-grid { grid-template-columns: repeat(3, 1fr); }
+  .kanban-board { flex-wrap: nowrap; }
+  .kanban-column { min-width: 260px; }
+  .masonry-grid { columns: 2; }
+  .fullview-body { padding: 20px 16px; }
+  .quick-actions { gap: 6px; }
+  .quick-action-btn { padding: 8px 12px; font-size: 12px; }
+  .welcome-section { padding: 24px; }
+  .welcome-section h1 { font-size: 22px; }
+  .fab { bottom: 16px; right: 16px; width: 50px; height: 50px; font-size: 20px; }
+  .chats-grid.view-large { grid-template-columns: 1fr; }
+  .chats-grid.view-medium { grid-template-columns: 1fr 1fr; }
+  .chats-grid.view-compact { grid-template-columns: 1fr 1fr; }
+  .chats-search-row { flex-direction: column; }
+  .chats-search-input { width: 100%; }
+  .view-size-toggle { width: 100%; justify-content: center; }
+  .chats-section-header { flex-direction: column; align-items: stretch; }
+  .chats-section-header .btn { width: 100%; justify-content: center; }
+  .dashboard-chats-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .cards-grid-sm { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .weekly-grid { grid-template-columns: repeat(2, 1fr); }
+  .masonry-grid { columns: 1; }
+  .chats-grid.view-medium { grid-template-columns: 1fr; }
+  .chats-grid.view-compact { grid-template-columns: 1fr 1fr; }
+}
+
+/* ========== STAGGER ANIMATION ========== */
+.stagger-in { opacity: 0; transform: translateY(12px); animation: staggerFade 0.4s ease-out forwards; }
+@keyframes staggerFade { to { opacity: 1; transform: translateY(0); } }
+
+/* Card slide in */
+@keyframes slideInBounce {
+  0% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  60% { transform: translateY(5px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.slide-in-bounce { animation: slideInBounce 0.4s ease-out forwards; }
+
+/* ========== SIDEBAR MOBILE OVERLAY ========== */
+.sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 140; display: none; }
+.sidebar-overlay.active { display: block; }
+
+/* ========== IMAGE VIEWER ========== */
+.image-viewer {
+  position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all var(--transition); cursor: pointer;
+}
+.image-viewer.active { opacity: 1; visibility: visible; }
+.image-viewer img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: var(--radius-sm); }
+.image-viewer .close-viewer { position: absolute; top: 20px; right: 20px; color: white; font-size: 24px; cursor: pointer; }
+
+/* ========== HIDE SECTION ========== */
+.page-section { display: none; }
+.page-section.active { display: block; }
+
+.drag-ghost { position: absolute; pointer-events: none; opacity: 0.8; z-index: 1000; }
+
+.content-card .content-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.content-card .content-excerpt { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.content-card .content-platforms { display: flex; gap: 6px; margin-bottom: 8px; }
+.content-card .content-footer { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-muted); }
+
+.mini-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.mini-day { text-align: center; padding: 8px 4px; border-radius: var(--radius-sm); background: var(--bg-surface-2); font-size: 11px; }
+.mini-day .mini-day-name { font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 2px; }
+.mini-day .mini-day-num { font-size: 14px; font-weight: 700; font-family: var(--font-display); }
+.mini-day .mini-day-content { margin-top: 4px; }
+.mini-day .mini-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin: 1px; }
+.mini-day.today { border: 2px solid var(--primary); }
+</style>
+</head>
+<body>
+
+<!-- ========== SIDEBAR OVERLAY (mobile) ========== -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="header-left">
+    <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+    <div class="logo">
+      <div class="logo-icon">CH</div>
+      <span class="logo-text">CreatorHub</span>
+    </div>
+  </div>
+  <div class="header-center" style="position:relative;">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="globalSearch" placeholder="Search everything..." oninput="handleGlobalSearch(this.value)" onfocus="handleGlobalSearch(this.value)" onblur="setTimeout(()=>document.getElementById('searchResults').classList.remove('active'),200)">
+      <span class="search-shortcut">Ctrl+K</span>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div class="header-right">
+    <div class="streak-badge" id="streakBadge">
+      <span class="fire">🔥</span>
+      <span id="streakCount">0</span>
+    </div>
+    <button class="header-btn" onclick="toggleTheme()" title="Toggle theme" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="header-btn" onclick="navigateTo('settings')" title="Settings">
+      <i class="fas fa-cog"></i>
+    </button>
+  </div>
+</header>
+
+<!-- ========== SIDEBAR ========== -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-nav">
+    <div class="nav-item active" data-page="home" onclick="navigateTo('home')">
+      <i class="fas fa-home"></i><span class="nav-label">Home</span>
+    </div>
+    <div class="nav-item" data-page="chats" onclick="navigateTo('chats')">
+      <i class="fas fa-comments"></i><span class="nav-label">AI Chats</span>
+    </div>
+    <div class="nav-item" data-page="videos" onclick="navigateTo('videos')">
+      <i class="fas fa-film"></i><span class="nav-label">Reference Videos</span>
+    </div>
+    <div class="nav-item" data-page="calendar" onclick="navigateTo('calendar')">
+      <i class="fas fa-calendar-alt"></i><span class="nav-label">Content Calendar</span>
+    </div>
+    <div class="nav-item" data-page="ideas" onclick="navigateTo('ideas')">
+      <i class="fas fa-lightbulb"></i><span class="nav-label">Idea Bank</span>
+    </div>
+    <div class="nav-item" data-page="voice" onclick="navigateTo('voice')">
+      <i class="fas fa-microphone"></i><span class="nav-label">Voice Notes</span>
+    </div>
+    <div class="nav-item" data-page="inspiration" onclick="navigateTo('inspiration')">
+      <i class="fas fa-image"></i><span class="nav-label">Inspiration Board</span>
+    </div>
+    <div class="nav-item" data-page="settings" onclick="navigateTo('settings')">
+      <i class="fas fa-cog"></i><span class="nav-label">Settings</span>
+    </div>
+  </div>
+  <div class="sidebar-footer">
+    <div class="sidebar-brand">BYTE BY MATEEN</div>
+    <button class="collapse-btn" onclick="toggleCollapse()">
+      <i class="fas fa-chevron-left" id="collapseIcon"></i>
+      <span class="collapse-text">Collapse</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main class="main-content" id="mainContent">
+
+  <!-- ===== HOME / DASHBOARD ===== -->
+  <div class="page-section active" id="page-home">
+    <div class="welcome-section">
+      <h1>Welcome back, Mateen! 👋</h1>
+      <p>Ready to create for BYTE BY MATEEN?</p>
+      <div class="welcome-streak">
+        <span class="fire">🔥</span>
+        <span id="welcomeStreak">0 days creating content</span>
+      </div>
+    </div>
+
+    <div class="stats-grid" id="statsGrid"></div>
+
+    <div class="quick-actions">
+      <button class="quick-action-btn" onclick="openAddChat()"><i class="fas fa-plus" style="color:var(--chatgpt)"></i> Save Chat</button>
+      <button class="quick-action-btn" onclick="openAddVideo()"><i class="fas fa-plus" style="color:var(--youtube)"></i> Save Video</button>
+      <button class="quick-action-btn" onclick="openAddIdea()"><i class="fas fa-plus" style="color:var(--cat-idea)"></i> Add Idea</button>
+      <button class="quick-action-btn" onclick="openAddContent()"><i class="fas fa-plus" style="color:var(--cat-script)"></i> Add Content</button>
+      <button class="quick-action-btn" onclick="navigateTo('voice')"><i class="fas fa-microphone" style="color:var(--error)"></i> Record Idea</button>
+      <button class="quick-action-btn" onclick="openAddInspiration()"><i class="fas fa-camera" style="color:var(--accent)"></i> Add Inspiration</button>
+    </div>
+
+    <div class="dashboard-section">
+      <h3><i class="fas fa-calendar-week"></i> This Week</h3>
+      <div class="mini-week" id="miniWeek"></div>
+    </div>
+
+    <div class="dashboard-section">
+      <h3><i class="fas fa-comments"></i> Recent AI Chats</h3>
+      <div class="dashboard-chats-grid" id="dashboardChats"></div>
+    </div>
+
+    <div class="dashboard-section">
+      <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+      <div class="activity-feed" id="activityFeed"></div>
+    </div>
+
+    <div class="dashboard-section">
+      <h3><i class="fas fa-layer-group"></i> Recently Added</h3>
+      <div class="cards-grid" id="recentItems"></div>
+    </div>
+  </div>
+
+  <!-- ===== AI CHATS (REDESIGNED) ===== -->
+  <div class="page-section" id="page-chats">
+    <div class="chats-section-header">
+      <div class="title-area">
+        <h1><i class="fas fa-comments" style="color:var(--chatgpt);"></i> AI Chats</h1>
+        <p>Manage your ChatGPT, Claude, Grok, Gemini, and Perplexity chats</p>
+      </div>
+      <button class="btn btn-primary" onclick="openAddChat()"><i class="fas fa-plus"></i> Save New Chat</button>
+    </div>
+
+    <div class="chats-toolbar">
+      <div class="chats-search-row">
+        <div class="chats-search-input">
+          <i class="fas fa-search"></i>
+          <input type="text" id="chatSearchInput" placeholder="Search chats by title, description, tags..." oninput="renderChats()">
+        </div>
+        <select class="sort-select" id="chatSortSelect" onchange="renderChats()">
+          <option value="recent">Recently Added</option>
+          <option value="lastUsed">Recently Used</option>
+          <option value="mostUsed">Most Used</option>
+          <option value="az">Alphabetical (A-Z)</option>
+          <option value="za">Alphabetical (Z-A)</option>
+        </select>
+        <div class="view-size-toggle">
+          <button class="active" onclick="setChatView('large')" id="chatViewLarge" title="Large tiles"><i class="fas fa-th-large"></i></button>
+          <button onclick="setChatView('medium')" id="chatViewMedium" title="Medium tiles"><i class="fas fa-th"></i></button>
+          <button onclick="setChatView('compact')" id="chatViewCompact" title="Compact tiles"><i class="fas fa-grip-horizontal"></i></button>
+          <button onclick="setChatView('list')" id="chatViewList" title="List view"><i class="fas fa-list"></i></button>
+        </div>
+      </div>
+      <div class="filter-bar" id="chatPlatformFilter"></div>
+      <div class="filter-bar" id="chatCategoryFilter"></div>
+    </div>
+
+    <div id="chatsContainer"></div>
+  </div>
+
+  <!-- ===== REFERENCE VIDEOS ===== -->
+  <div class="page-section" id="page-videos">
+    <div class="section-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div>
+        <h1>🎬 Reference Videos</h1>
+        <p>Inspiration for your content</p>
+      </div>
+      <button class="btn btn-primary" onclick="openAddVideo()"><i class="fas fa-plus"></i> Save New Reference</button>
+    </div>
+    <div class="filter-bar" id="videoPlatformFilter"></div>
+    <div class="filter-bar" id="videoCategoryFilter"></div>
+    <div id="videosContainer" class="cards-grid"></div>
+  </div>
+
+  <!-- ===== CONTENT CALENDAR ===== -->
+  <div class="page-section" id="page-calendar">
+    <div class="section-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div>
+        <h1>📅 Content Calendar</h1>
+        <p>Plan and manage your content pipeline</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-secondary" onclick="openAddWeeklyPlan()" id="addWeeklyPlanBtn" style="display:none;"><i class="fas fa-plus"></i> New Weekly Plan</button>
+        <button class="btn btn-primary" onclick="openAddContent()"><i class="fas fa-plus"></i> New Content</button>
+      </div>
+    </div>
+    <div class="calendar-controls">
+      <div class="calendar-nav">
+        <button class="btn btn-ghost" onclick="changeWeek(-1)"><i class="fas fa-chevron-left"></i></button>
+        <h3 id="calendarWeekLabel"></h3>
+        <button class="btn btn-ghost" onclick="changeWeek(1)"><i class="fas fa-chevron-right"></i></button>
+        <button class="btn btn-sm btn-secondary" onclick="changeWeek(0)">This Week</button>
+      </div>
+      <div class="view-toggle">
+        <button class="active" onclick="setCalendarView('grid')" id="viewGrid"><i class="fas fa-calendar-week"></i> Weekly</button>
+        <button onclick="setCalendarView('kanban')" id="viewKanban"><i class="fas fa-columns"></i> Kanban</button>
+        <button onclick="setCalendarView('plan')" id="viewPlan"><i class="fas fa-clipboard-list"></i> Weekly Plan</button>
+      </div>
+    </div>
+    <div id="calendarGrid" class="weekly-grid"></div>
+    <div id="kanbanBoard" class="kanban-board" style="display:none;"></div>
+    <div id="weeklyPlanView" class="weekly-plan-container" style="display:none;"></div>
+  </div>
+
+  <!-- ===== IDEA BANK ===== -->
+  <div class="page-section" id="page-ideas">
+    <div class="section-header">
+      <h1>💡 Idea Bank</h1>
+      <p>Capture ideas as they come</p>
+    </div>
+    <div class="card" style="margin-bottom:24px;">
+      <div class="form-group" style="margin-bottom:12px;">
+        <textarea id="quickIdeaInput" placeholder="Type your idea here... Press Enter to save or click Save" rows="3" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();saveQuickIdea();}"></textarea>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-primary" onclick="saveQuickIdea()"><i class="fas fa-save"></i> Save</button>
+        <button class="btn btn-secondary" onclick="startSpeechToText()"><i class="fas fa-microphone"></i> Voice Input</button>
+      </div>
+    </div>
+    <div class="filter-bar" id="ideaStatusFilter"></div>
+    <div id="ideasContainer" class="cards-grid-sm"></div>
+  </div>
+
+  <!-- ===== VOICE NOTES ===== -->
+  <div class="page-section" id="page-voice">
+    <div class="section-header">
+      <h1>🎤 Voice Notes</h1>
+      <p>Record ideas on the go</p>
+    </div>
+    <div class="record-section">
+      <button class="record-btn" id="recordBtn" onclick="toggleRecording()">
+        <i class="fas fa-microphone"></i>
+      </button>
+      <div class="record-timer" id="recordTimer">0:00</div>
+      <p style="color:var(--text-muted);font-size:13px;margin-top:8px;" id="recordHint">Tap to start recording</p>
+    </div>
+    <div id="voiceContainer"></div>
+  </div>
+
+  <!-- ===== INSPIRATION BOARD ===== -->
+  <div class="page-section" id="page-inspiration">
+    <div class="section-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div>
+        <h1>📸 Inspiration Board</h1>
+        <p>Visual inspiration for your content</p>
+      </div>
+      <button class="btn btn-primary" onclick="openAddInspiration()"><i class="fas fa-plus"></i> Add Screenshot</button>
+    </div>
+    <div class="filter-bar" id="inspirationCategoryFilter"></div>
+    <div id="inspirationContainer" class="masonry-grid"></div>
+  </div>
+
+  <!-- ===== SETTINGS ===== -->
+  <div class="page-section" id="page-settings">
+    <div class="section-header">
+      <h1>⚙️ Settings</h1>
+      <p>Customize your CreatorHub experience</p>
+    </div>
+    <div class="settings-section">
+      <h3>Appearance</h3>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label">Dark Mode</div>
+          <div class="setting-desc">Switch between light and dark theme</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="darkModeToggle" onchange="toggleTheme()">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h3>Profile</h3>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="settingsName" value="Mateen Haider Minhas" onchange="saveSetting('userName', this.value)">
+      </div>
+      <div class="form-group">
+        <label>Channel Name</label>
+        <input type="text" id="settingsChannel" value="BYTE BY MATEEN" onchange="saveSetting('channelName', this.value)">
+      </div>
+    </div>
+    <div class="settings-section">
+      <h3>Data Management</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <button class="btn btn-secondary" onclick="exportData()"><i class="fas fa-download"></i> Export All Data</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()"><i class="fas fa-upload"></i> Import Data</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+        <button class="btn btn-danger" onclick="confirmClearData()"><i class="fas fa-trash"></i> Clear All Data</button>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h3>Storage Usage</h3>
+      <div id="storageInfo" style="font-size:13px;color:var(--text-secondary);"></div>
+    </div>
+    <div class="settings-section">
+      <h3>About</h3>
+      <p style="font-size:13px;color:var(--text-secondary);">CreatorHub v1.0 — Built for BYTE BY MATEEN<br>Personal content management command center.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ========== FLOATING ACTION BUTTON ========== -->
+<button class="fab" id="fab" onclick="handleFabClick()"><i class="fas fa-plus"></i></button>
+
+<!-- ========== MODAL ========== -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- ========== FULLVIEW OVERLAY ========== -->
+<div class="fullview-overlay" id="fullviewOverlay">
+  <div class="fullview-header">
+    <button class="btn btn-ghost" onclick="closeFullview()"><i class="fas fa-times"></i> Close</button>
+    <h2 id="fullviewTitle"></h2>
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-ghost btn-sm" id="fullviewEditBtn"><i class="fas fa-edit"></i></button>
+    </div>
+  </div>
+  <div class="fullview-body" id="fullviewBody"></div>
+</div>
+
+<!-- ========== CONFIRM DIALOG ========== -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <h3 id="confirmTitle">Are you sure?</h3>
+    <p id="confirmMessage">This action cannot be undone.</p>
+    <div class="confirm-actions">
+      <button class="btn btn-secondary" onclick="closeConfirm()">Cancel</button>
+      <button class="btn btn-danger" id="confirmAction">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== IMAGE VIEWER ========== -->
+<div class="image-viewer" id="imageViewer" onclick="closeImageViewer()">
+  <span class="close-viewer"><i class="fas fa-times"></i></span>
+  <img id="viewerImage" src="" alt="">
+</div>
+
+<!-- ========== TOAST CONTAINER ========== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// =============================================
+// CREATORHUB — Complete JavaScript Application
+// =============================================
+
+// ===== UUID Generator =====
+function uuid() {
+  return 'xxxx-xxxx-4xxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0;
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+  }) + '-' + Date.now().toString(36);
+}
+
+// ===== LocalStorage Helpers =====
+function getData(key) {
+  try { return JSON.parse(localStorage.getItem('creatorhub_' + key)) || []; }
+  catch { return []; }
+}
+function setData(key, data) {
+  localStorage.setItem('creatorhub_' + key, JSON.stringify(data));
+}
+function getSettings() {
+  try {
+    return JSON.parse(localStorage.getItem('creatorhub_settings')) || {
+      theme: 'light', userName: 'Mateen Haider Minhas', channelName: 'BYTE BY MATEEN',
+      notifications: true, autoSave: true, weekStart: 'monday', chatViewSize: 'large'
+    };
+  } catch { return { theme: 'light', userName: 'Mateen Haider Minhas', channelName: 'BYTE BY MATEEN', chatViewSize: 'large' }; }
+}
+function saveSettings(s) { localStorage.setItem('creatorhub_settings', JSON.stringify(s)); }
+function saveSetting(key, value) {
+  const s = getSettings();
+  s[key] = value;
+  saveSettings(s);
+  showToast('Setting saved', 'success');
+}
+
+// ===== Activity Log =====
+function logActivity(icon, text, color) {
+  const activities = getData('activities');
+  activities.unshift({ icon, text, color, time: Date.now() });
+  if (activities.length > 50) activities.length = 50;
+  setData('activities', activities);
+}
+
+// ===== Streak Management =====
+function updateStreak() {
+  let streak = getData('streaks') || { count: 0, lastDate: null };
+  if (!streak.count) streak = { count: 0, lastDate: null };
+  const today = new Date().toDateString();
+  if (streak.lastDate === today) {
+    // Already counted today
+  } else {
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    if (streak.lastDate === yesterday) {
+      streak.count++;
+    } else if (streak.lastDate !== today) {
+      streak.count = 1;
+    }
+    streak.lastDate = today;
+  }
+  setData('streaks', streak);
+  document.getElementById('streakCount').textContent = streak.count;
+  document.getElementById('welcomeStreak').textContent = streak.count + ' days creating content';
+}
+function bumpStreak() {
+  let streak = getData('streaks') || { count: 0, lastDate: null };
+  if (!streak.count) streak = { count: 0, lastDate: null };
+  const today = new Date().toDateString();
+  if (streak.lastDate !== today) {
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    streak.count = (streak.lastDate === yesterday) ? streak.count + 1 : 1;
+    streak.lastDate = today;
+    setData('streaks', streak);
+  }
+  document.getElementById('streakCount').textContent = streak.count;
+  document.getElementById('welcomeStreak').textContent = streak.count + ' days creating content';
+}
+
+// ===== Toast =====
+function showToast(msg, type = 'info') {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+  const colors = { success: 'var(--success)', error: 'var(--error)', info: 'var(--info)' };
+  t.innerHTML = '<i class="fas ' + (icons[type]||icons.info) + '" style="color:' + (colors[type]||colors.info) + ';font-size:16px;"></i><span>' + msg + '</span>';
+  c.appendChild(t);
+  setTimeout(() => { t.style.animation = 'toastOut 0.3s ease-out forwards'; setTimeout(() => t.remove(), 300); }, 3000);
+}
+
+// ===== Confirm Dialog =====
+let confirmCallback = null;
+function showConfirm(title, message, callback) {
+  document.getElementById('confirmTitle').textContent = title;
+  document.getElementById('confirmMessage').textContent = message;
+  confirmCallback = callback;
+  document.getElementById('confirmAction').onclick = () => { closeConfirm(); if (confirmCallback) confirmCallback(); };
+  document.getElementById('confirmOverlay').classList.add('active');
+}
+function closeConfirm() { document.getElementById('confirmOverlay').classList.remove('active'); }
+
+// ===== Theme =====
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeToggle').innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+  document.getElementById('darkModeToggle').checked = !isDark;
+  const s = getSettings(); s.theme = isDark ? 'light' : 'dark'; saveSettings(s);
+}
+
+// ===== Sidebar =====
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  if (window.innerWidth <= 768) {
+    sb.classList.toggle('mobile-open');
+    ov.classList.toggle('active');
+  }
+}
+function toggleCollapse() {
+  const sb = document.getElementById('sidebar');
+  const icon = document.getElementById('collapseIcon');
+  sb.classList.toggle('collapsed');
+  icon.style.transform = sb.classList.contains('collapsed') ? 'rotate(180deg)' : '';
+}
+
+// ===== Navigation =====
+let currentPage = 'home';
+function navigateTo(page) {
+  currentPage = page;
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === page));
+  if (window.innerWidth <= 768) { toggleSidebar(); }
+  window.scrollTo(0, 0);
+  document.getElementById('mainContent').scrollTop = 0;
+  renderCurrentPage();
+}
+
+function renderCurrentPage() {
+  switch(currentPage) {
+    case 'home': renderDashboard(); break;
+    case 'chats': renderChats(); break;
+    case 'videos': renderVideos(); break;
+    case 'calendar': renderCalendar(); break;
+    case 'ideas': renderIdeas(); break;
+    case 'voice': renderVoiceNotes(); break;
+    case 'inspiration': renderInspiration(); break;
+    case 'settings': renderSettings(); break;
+  }
+}
+
+// ===== FAB Handler =====
+function handleFabClick() {
+  switch(currentPage) {
+    case 'chats': openAddChat(); break;
+    case 'videos': openAddVideo(); break;
+    case 'calendar': openAddContent(); break;
+    case 'ideas': openAddIdea(); break;
+    case 'voice': toggleRecording(); break;
+    case 'inspiration': openAddInspiration(); break;
+    default: openAddContent(); break;
+  }
+}
+
+// ===== Modal =====
+function openModal(html) {
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+// ===== Fullview =====
+function closeFullview() { document.getElementById('fullviewOverlay').classList.remove('active'); }
+
+// ===== Time helpers =====
+function timeAgo(ts) {
+  const diff = Date.now() - ts;
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'Just now';
+  if (mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return hrs + 'h ago';
+  const days = Math.floor(hrs / 24);
+  if (days < 7) return days + 'd ago';
+  return new Date(ts).toLocaleDateString();
+}
+function formatDate(date) {
+  return new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+// ===== Platform Detection =====
+function detectChatPlatform(url) {
+  if (!url) return 'other';
+  if (url.includes('chat.openai.com') || url.includes('chatgpt.com')) return 'chatgpt';
+  if (url.includes('claude.ai')) return 'claude';
+  if (url.includes('grok') || url.includes('x.ai')) return 'grok';
+  if (url.includes('gemini.google.com')) return 'gemini';
+  if (url.includes('perplexity.ai')) return 'perplexity';
+  return 'other';
+}
+function detectVideoPlatform(url) {
+  if (!url) return 'other';
+  if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube';
+  if (url.includes('tiktok.com')) return 'tiktok';
+  if (url.includes('instagram.com')) return 'instagram';
+  if (url.includes('facebook.com') || url.includes('fb.watch')) return 'facebook';
+  if (url.includes('vimeo.com')) return 'vimeo';
+  return 'other';
+}
+function extractYouTubeId(url) {
+  const m = url.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+function getYouTubeThumbnail(url) {
+  const id = extractYouTubeId(url);
+  return id ? 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg' : null;
+}
+function extractDomain(url) {
+  try { return new URL(url).hostname.replace('www.', ''); } catch { return ''; }
+}
+function getChatIcon(url, customIcon) {
+  if (customIcon) return customIcon;
+  const domain = extractDomain(url);
+  if (domain) return 'https://www.google.com/s2/favicons?domain=' + domain + '&sz=128';
+  return null;
+}
+function platformIcon(platform) {
+  const icons = {
+    chatgpt: 'fa-robot', claude: 'fa-brain', grok: 'fa-bolt', gemini: 'fa-gem', perplexity: 'fa-compass',
+    youtube: 'fa-youtube', tiktok: 'fa-tiktok', instagram: 'fa-instagram', facebook: 'fa-facebook', vimeo: 'fa-vimeo-v',
+    other: 'fa-globe'
+  };
+  return icons[platform] || 'fa-globe';
+}
+function platformLabel(p) {
+  const labels = { chatgpt: 'ChatGPT', claude: 'Claude', grok: 'Grok', gemini: 'Gemini', perplexity: 'Perplexity', youtube: 'YouTube', tiktok: 'TikTok', instagram: 'Instagram', facebook: 'Facebook', vimeo: 'Vimeo', other: 'Other' };
+  return labels[p] || p;
+}
+function platformColor(p) {
+  const colors = { chatgpt: 'var(--chatgpt)', claude: 'var(--claude)', grok: 'var(--grok)', gemini: 'var(--gemini)', perplexity: 'var(--perplexity)', youtube: 'var(--youtube)', tiktok: 'var(--tiktok)', instagram: '#e4405f', facebook: 'var(--facebook)', vimeo: '#1ab7ea' };
+  return colors[p] || 'var(--text-muted)';
+}
+function platformInitial(p) {
+  const initials = { chatgpt: 'G', claude: 'C', grok: 'X', gemini: 'G', perplexity: 'P', other: '?' };
+  return initials[p] || '?';
+}
+function statusLabel(s) {
+  const labels = { idea: '💡 Idea', scripting: '✍️ Scripting', filming: '🎬 Filming', editing: '✂️ Editing', ready: '✅ Ready', posted: '📢 Posted' };
+  return labels[s] || s;
+}
+function categoryIcon(c) {
+  const icons = { thumbnail: '🎨', script: '✍️', idea: '💡', research: '🔍', editing: '✂️', audio: '🎵', analytics: '📊', hook: '🎣', style: '🎨', transition: '🔀', other: '🎯', layout: '📐', color: '🎨', design: '✏️' };
+  return icons[c] || '🎯';
+}
+
+// ===== DROPDOWN HELPER =====
+function chatDropdownMenu(itemId) {
+  return '<div style="position:relative;display:inline-block;" class="dropdown-wrap">' +
+    '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();toggleDropdown(this)"><i class="fas fa-ellipsis-v"></i></button>' +
+    '<div class="dropdown-menu" style="display:none;position:absolute;right:0;top:100%;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);min-width:160px;z-index:50;">' +
+      '<div style="padding:8px 14px;font-size:13px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background=\'var(--bg-surface-2)\'" onmouseout="this.style.background=\'transparent\'" onclick="event.stopPropagation();editItem(\'' + itemId + '\',\'chat\')"><i class="fas fa-edit" style="width:18px;"></i> Edit</div>' +
+      '<div style="padding:8px 14px;font-size:13px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background=\'var(--bg-surface-2)\'" onmouseout="this.style.background=\'transparent\'" onclick="event.stopPropagation();duplicateChat(\'' + itemId + '\')"><i class="fas fa-copy" style="width:18px;"></i> Duplicate</div>' +
+      '<div style="padding:8px 14px;font-size:13px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background=\'var(--bg-surface-2)\'" onmouseout="this.style.background=\'transparent\'" onclick="event.stopPropagation();copyChatUrl(\'' + itemId + '\')"><i class="fas fa-link" style="width:18px;"></i> Copy URL</div>' +
+      '<div style="padding:8px 14px;font-size:13px;cursor:pointer;transition:background 0.15s;color:var(--error);" onmouseover="this.style.background=\'var(--bg-surface-2)\'" onmouseout="this.style.background=\'transparent\'" onclick="event.stopPropagation();deleteItem(\'' + itemId + '\',\'chat\')"><i class="fas fa-trash" style="width:18px;"></i> Delete</div>' +
+    '</div></div>';
+}
+function dropdownMenu(itemId, type) {
+  return '<div style="position:relative;display:inline-block;" class="dropdown-wrap">' +
+    '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();toggleDropdown(this)"><i class="fas fa-ellipsis-v"></i></button>' +
+    '<div class="dropdown-menu" style="display:none;position:absolute;right:0;top:100%;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);min-width:140px;z-index:50;">' +
+      '<div style="padding:8px 14px;font-size:13px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background=\'var(--bg-surface-2)\'" onmouseout="this.style.background=\'transparent\'" onclick="event.stopPropagation();editItem(\'' + itemId + '\',\'' + type + '\')"><i class="fas fa-edit" style="width:18px;"></i> Edit</div>' +
+      '<div style="padding:8px 14px;font-size:13px;cursor:pointer;transition:background 0.15s;color:var(--error);" onmouseover="this.style.background=\'var(--bg-surface-2)\'" onmouseout="this.style.background=\'transparent\'" onclick="event.stopPropagation();deleteItem(\'' + itemId + '\',\'' + type + '\')"><i class="fas fa-trash" style="width:18px;"></i> Delete</div>' +
+    '</div></div>';
+}
+function toggleDropdown(btn) {
+  const menu = btn.nextElementSibling;
+  document.querySelectorAll('.dropdown-menu').forEach(m => { if (m !== menu) m.style.display = 'none'; });
+  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+}
+document.addEventListener('click', () => { document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none'); });
+
+// =============================================
+// DASHBOARD
+// =============================================
+function renderDashboard() {
+  updateStreak();
+  const chats = getData('chats');
+  const refs = getData('references');
+  const content = getData('content');
+  const ideas = getData('ideas');
+  const voices = getData('voice');
+  const insp = getData('inspiration');
+
+  // Stats
+  const readyCount = content.filter(c => c.status === 'ready' || c.status === 'posted').length;
+  document.getElementById('statsGrid').innerHTML =
+    statCard('fa-comments', chats.length, 'AI Chats', 'var(--chatgpt)', 'chats') +
+    statCard('fa-film', refs.length, 'References', 'var(--youtube)', 'videos') +
+    statCard('fa-calendar-check', readyCount, 'Ready/Posted', 'var(--success)', 'calendar') +
+    statCard('fa-lightbulb', ideas.length, 'Ideas', 'var(--cat-idea)', 'ideas') +
+    statCard('fa-microphone', voices.length, 'Voice Notes', 'var(--error)', 'voice') +
+    statCard('fa-image', insp.length, 'Inspiration', 'var(--accent)', 'inspiration');
+
+  // Mini week
+  renderMiniWeek();
+
+  // Recent Chats (Premium Tiles)
+  renderDashboardChats();
+
+  // Activity
+  const activities = getData('activities');
+  const feed = document.getElementById('activityFeed');
+  if (activities.length === 0) {
+    feed.innerHTML = '<div class="empty-state" style="padding:20px;"><p>No activity yet. Start creating!</p></div>';
+  } else {
+    feed.innerHTML = activities.slice(0, 8).map(a =>
+      '<div class="activity-item"><div class="activity-icon" style="background:' + (a.color || 'var(--bg-surface-2)') + ';color:white;">' + a.icon + '</div><span>' + a.text + '</span><span class="activity-time">' + timeAgo(a.time) + '</span></div>'
+    ).join('');
+  }
+
+  // Recent items (excluding chats since we show them separately)
+  const all = [
+    ...refs.map(r => ({ ...r, _type: 'ref', _sort: r.addedAt })),
+    ...content.map(c => ({ ...c, _type: 'content', _sort: c.createdAt })),
+    ...ideas.map(i => ({ ...i, _type: 'idea', _sort: i.createdAt })),
+  ].sort((a, b) => b._sort - a._sort).slice(0, 6);
+
+  const recent = document.getElementById('recentItems');
+  if (all.length === 0) {
+    recent.innerHTML = '<div class="empty-state"><div class="empty-icon">📦</div><h3>Nothing here yet</h3><p>Start by adding your first chat, video, or idea!</p></div>';
+  } else {
+    recent.innerHTML = all.map((item, i) => {
+      const delay = i * 50;
+      if (item._type === 'ref') return '<div class="card stagger-in" style="animation-delay:' + delay + 'ms;cursor:pointer;" onclick="window.open(\'' + escapeAttr(item.url) + '\',\'_blank\')"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span class="badge badge-platform badge-' + item.platform + '">' + platformLabel(item.platform) + '</span></div><h4 style="font-size:14px;font-weight:600;">Reference Video</h4><p style="font-size:12px;color:var(--text-secondary);">' + esc((item.notes||'').substring(0,80)) + '</p><p style="font-size:12px;color:var(--text-muted);margin-top:4px;">' + timeAgo(item.addedAt) + '</p></div>';
+      if (item._type === 'content') return '<div class="card stagger-in" style="animation-delay:' + delay + 'ms;cursor:pointer;" onclick="viewContent(\'' + item.id + '\')"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span class="status-dot status-' + item.status + '"></span><span style="font-size:12px;color:var(--text-muted);">' + statusLabel(item.status) + '</span></div><h4 style="font-size:14px;font-weight:600;">' + esc(item.title) + '</h4><p style="font-size:12px;color:var(--text-muted);margin-top:4px;">' + timeAgo(item.createdAt) + '</p></div>';
+      if (item._type === 'idea') return '<div class="card stagger-in" style="animation-delay:' + delay + 'ms;"><p style="font-size:14px;margin-bottom:8px;">' + esc(item.text).substring(0, 100) + '</p><p style="font-size:12px;color:var(--text-muted);">' + timeAgo(item.createdAt) + '</p></div>';
+      return '';
+    }).join('');
+  }
+}
+
+function renderDashboardChats() {
+  const chats = getData('chats').slice(0, 3);
+  const container = document.getElementById('dashboardChats');
+  if (chats.length === 0) {
+    container.innerHTML = '<div class="empty-state" style="padding:30px;"><p>No AI chats saved yet. <a href="#" onclick="event.preventDefault();openAddChat()">Add your first chat!</a></p></div>';
+    return;
+  }
+  container.innerHTML = chats.map((chat, i) => renderChatTile(chat, i, 'large')).join('');
+}
+
+function statCard(icon, count, label, color, page) {
+  return '<div class="stat-card" onclick="navigateTo(\'' + page + '\')"><div class="stat-icon" style="background:' + color + '20;color:' + color + ';"><i class="fas ' + icon + '"></i></div><div class="stat-info"><div class="stat-number">' + count + '</div><div class="stat-label">' + label + '</div></div></div>';
+}
+
+function renderMiniWeek() {
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - ((dayOfWeek + 6) % 7));
+  const content = getData('content');
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  let html = '';
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    const dateStr = d.toISOString().split('T')[0];
+    const isToday = d.toDateString() === today.toDateString();
+    const dayContent = content.filter(c => c.scheduledDate === dateStr);
+    html += '<div class="mini-day' + (isToday ? ' today' : '') + '"><span class="mini-day-name">' + days[i] + '</span><span class="mini-day-num">' + d.getDate() + '</span><div class="mini-day-content">' +
+      dayContent.map(c => '<span class="mini-dot" style="background:' + platformColor(c.platforms?.[0] || 'other') + ';" title="' + escapeAttr(c.title) + '"></span>').join('') +
+      '</div></div>';
+  }
+  document.getElementById('miniWeek').innerHTML = html;
+}
+
+// =============================================
+// AI CHATS (REDESIGNED)
+// =============================================
+let chatPlatformFilter = 'all';
+let chatCatFilter = 'all';
+let chatViewSize = 'large';
+
+function setChatView(view) {
+  chatViewSize = view;
+  ['large', 'medium', 'compact', 'list'].forEach(v => {
+    document.getElementById('chatView' + v.charAt(0).toUpperCase() + v.slice(1)).classList.toggle('active', v === view);
+  });
+  const s = getSettings(); s.chatViewSize = view; saveSettings(s);
+  renderChats();
+}
+
+function renderChats() {
+  const settings = getSettings();
+  chatViewSize = settings.chatViewSize || 'large';
+  ['large', 'medium', 'compact', 'list'].forEach(v => {
+    const btn = document.getElementById('chatView' + v.charAt(0).toUpperCase() + v.slice(1));
+    if (btn) btn.classList.toggle('active', v === chatViewSize);
+  });
+
+  const chats = getData('chats');
+  const platforms = ['all', 'chatgpt', 'claude', 'grok', 'gemini', 'perplexity', 'other'];
+  const categories = ['all', 'thumbnail', 'script', 'idea', 'research', 'editing', 'audio', 'analytics', 'other'];
+
+  document.getElementById('chatPlatformFilter').innerHTML = platforms.map(p =>
+    '<button class="filter-chip' + (chatPlatformFilter === p ? ' active' : '') + '" onclick="chatPlatformFilter=\'' + p + '\';renderChats();">' + (p === 'all' ? 'All Platforms' : platformLabel(p)) + '</button>'
+  ).join('');
+
+  document.getElementById('chatCategoryFilter').innerHTML = categories.map(c =>
+    '<button class="filter-chip' + (chatCatFilter === c ? ' active' : '') + '" onclick="chatCatFilter=\'' + c + '\';renderChats();">' + (c === 'all' ? 'All Categories' : categoryIcon(c) + ' ' + c) + '</button>'
+  ).join('');
+
+  // Filter
+  let filtered = chats;
+  if (chatPlatformFilter !== 'all') filtered = filtered.filter(c => c.platform === chatPlatformFilter);
+  if (chatCatFilter !== 'all') filtered = filtered.filter(c => c.category === chatCatFilter);
+
+  // Search
+  const searchQuery = (document.getElementById('chatSearchInput')?.value || '').toLowerCase();
+  if (searchQuery) {
+    filtered = filtered.filter(c => 
+      (c.title || '').toLowerCase().includes(searchQuery) ||
+      (c.notes || '').toLowerCase().includes(searchQuery) ||
+      (c.tags || []).some(t => t.toLowerCase().includes(searchQuery))
+    );
+  }
+
+  // Sort
+  const sortBy = document.getElementById('chatSortSelect')?.value || 'recent';
+  if (sortBy === 'recent') filtered.sort((a, b) => (b.addedAt || 0) - (a.addedAt || 0));
+  else if (sortBy === 'lastUsed') filtered.sort((a, b) => (b.lastUsed || 0) - (a.lastUsed || 0));
+  else if (sortBy === 'mostUsed') filtered.sort((a, b) => (b.usageCount || 0) - (a.usageCount || 0));
+  else if (sortBy === 'az') filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+  else if (sortBy === 'za') filtered.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
+
+  // Separate pinned
+  const pinned = filtered.filter(c => c.pinned);
+  const unpinned = filtered.filter(c => !c.pinned);
+
+  const container = document.getElementById('chatsContainer');
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="chats-empty-state"><div class="empty-icon">💬</div><h3>No AI Chats Saved Yet</h3><p>Save your ChatGPT, Claude, Grok, or Gemini chats used for content creation.</p><button class="btn btn-primary" onclick="openAddChat()"><i class="fas fa-plus"></i> Save Your First Chat</button></div>';
+    return;
+  }
+
+  let html = '';
+  if (pinned.length > 0) {
+    html += '<div class="pinned-section"><div class="pinned-header"><i class="fas fa-thumbtack"></i> Pinned (' + pinned.length + ')</div>';
+    html += '<div class="chats-grid view-' + chatViewSize + '">' + pinned.map((chat, i) => renderChatTile(chat, i, chatViewSize)).join('') + '</div></div>';
+    if (unpinned.length > 0) {
+      html += '<div class="pinned-divider"><span>All Chats</span></div>';
+    }
+  }
+  if (unpinned.length > 0) {
+    html += '<div class="chats-grid view-' + chatViewSize + '">' + unpinned.map((chat, i) => renderChatTile(chat, i + pinned.length, chatViewSize)).join('') + '</div>';
+  }
+  container.innerHTML = html;
+}
+
+function renderChatTile(chat, index, viewSize) {
+  const delay = index * 40;
+  const iconUrl = getChatIcon(chat.url, chat.customIconUrl);
+  const domain = extractDomain(chat.url);
+  
+  const iconHtml = iconUrl 
+    ? '<img src="' + escapeAttr(iconUrl) + '" alt="" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="icon-fallback ' + chat.platform + '" style="display:none;">' + platformInitial(chat.platform) + '</div>'
+    : '<div class="icon-fallback ' + chat.platform + '">' + platformInitial(chat.platform) + '</div>';
+
+  return '<div class="chat-tile ' + chat.platform + ' stagger-in" style="animation-delay:' + delay + 'ms;" onclick="openChatUrl(\'' + chat.id + '\')">' +
+    '<div class="chat-tile-strip ' + chat.platform + '"></div>' +
+    '<div class="chat-tile-actions-top">' +
+      '<button class="' + (chat.pinned ? 'pinned' : '') + '" onclick="event.stopPropagation();toggleChatPin(\'' + chat.id + '\')" title="Pin to top"><i class="fas fa-thumbtack"></i></button>' +
+      '<button class="' + (chat.favorite ? 'favorited' : '') + '" onclick="event.stopPropagation();toggleChatFavorite(\'' + chat.id + '\')" title="Favorite"><i class="fas fa-star"></i></button>' +
+    '</div>' +
+    '<div class="chat-tile-body">' +
+      '<div class="chat-tile-header">' +
+        '<div class="chat-tile-icon-wrap">' + iconHtml + '</div>' +
+        '<div class="chat-tile-info">' +
+          '<div class="chat-tile-title">' + esc(chat.title) + '</div>' +
+          '<div class="chat-tile-domain"><i class="fas fa-external-link-alt"></i> ' + esc(domain || platformLabel(chat.platform)) + '</div>' +
+        '</div>' +
+      '</div>' +
+      (chat.notes ? '<div class="chat-tile-description">' + esc(chat.notes) + '</div>' : '') +
+      '<div class="chat-tile-category ' + chat.category + '">' + categoryIcon(chat.category) + ' ' + (chat.category || 'Other') + '</div>' +
+      '<div class="chat-tile-meta">' +
+        '<span><i class="fas fa-clock"></i> ' + timeAgo(chat.lastUsed || chat.addedAt) + '</span>' +
+        '<span><i class="fas fa-chart-bar"></i> ' + (chat.usageCount || 0) + ' uses</span>' +
+        (chat.favorite ? '<span><i class="fas fa-star" style="color:var(--accent-2);"></i></span>' : '') +
+      '</div>' +
+      '<div class="chat-tile-footer">' +
+        '<button class="btn btn-sm btn-primary" onclick="event.stopPropagation();openChatUrl(\'' + chat.id + '\')"><i class="fas fa-external-link-alt"></i> <span>Open Chat</span></button>' +
+        chatDropdownMenu(chat.id) +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function openChatUrl(id) {
+  const chats = getData('chats');
+  const chat = chats.find(c => c.id === id);
+  if (chat) {
+    chat.lastUsed = Date.now();
+    chat.usageCount = (chat.usageCount || 0) + 1;
+    setData('chats', chats);
+    window.open(chat.url, '_blank');
+  }
+}
+
+function toggleChatPin(id) {
+  const chats = getData('chats');
+  const chat = chats.find(c => c.id === id);
+  if (chat) {
+    const pinnedCount = chats.filter(c => c.pinned && c.id !== id).length;
+    if (!chat.pinned && pinnedCount >= 6) {
+      showToast('Maximum 6 pinned chats allowed', 'error');
+      return;
+    }
+    chat.pinned = !chat.pinned;
+    setData('chats', chats);
+    showToast(chat.pinned ? 'Pinned to top!' : 'Unpinned', 'success');
+    renderChats();
+  }
+}
+
+function toggleChatFavorite(id) {
+  const chats = getData('chats');
+  const chat = chats.find(c => c.id === id);
+  if (chat) {
+    chat.favorite = !chat.favorite;
+    setData('chats', chats);
+    showToast(chat.favorite ? 'Added to favorites!' : 'Removed from favorites', 'success');
+    renderChats();
+  }
+}
+
+function duplicateChat(id) {
+  const chats = getData('chats');
+  const chat = chats.find(c => c.id === id);
+  if (chat) {
+    const newChat = { ...chat, id: uuid(), title: chat.title + ' (copy)', addedAt: Date.now(), pinned: false };
+    chats.unshift(newChat);
+    setData('chats', chats);
+    showToast('Chat duplicated!', 'success');
+    renderChats();
+  }
+}
+
+function copyChatUrl(id) {
+  const chats = getData('chats');
+  const chat = chats.find(c => c.id === id);
+  if (chat) {
+    navigator.clipboard.writeText(chat.url).then(() => showToast('URL copied!', 'success')).catch(() => showToast('Failed to copy', 'error'));
+  }
+}
+
+function trackChatUse(id) {
+  const chats = getData('chats');
+  const chat = chats.find(c => c.id === id);
+  if (chat) { chat.lastUsed = Date.now(); chat.usageCount = (chat.usageCount || 0) + 1; setData('chats', chats); }
+}
+
+function openAddChat(editId) {
+  const existing = editId ? getData('chats').find(c => c.id === editId) : null;
+  const categories = ['thumbnail', 'script', 'idea', 'research', 'editing', 'audio', 'analytics', 'other'];
+  
+  const iconPreviewHtml = '<div class="icon-preview-container" id="iconPreviewContainer" style="display:none;">' +
+    '<div class="icon-preview" id="iconPreviewImg"><span class="fallback">?</span></div>' +
+    '<div class="icon-preview-info"><div class="source" id="iconPreviewSource"></div></div></div>';
+
+  openModal(
+    '<div class="modal-header"><h2>' + (existing ? '✏️ Edit Chat' : '💬 Save New Chat') + '</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<div class="form-group"><label>Chat URL *</label><input type="url" id="chatUrl" placeholder="Paste chat URL here..." value="' + escapeAttr(existing?.url || '') + '" oninput="handleChatUrlInput(this.value)"><div id="chatPlatformDetected" class="helper"></div></div>' +
+      '<div class="form-group"><label>Chat Title *</label><input type="text" id="chatTitle" placeholder="E.g., Thumbnail ideas for AI video" value="' + escapeAttr(existing?.title || '') + '"></div>' +
+      '<div class="form-group"><label>Custom Icon URL (optional)</label><input type="url" id="chatIconUrl" placeholder="Paste your own icon image URL" value="' + escapeAttr(existing?.customIconUrl || '') + '" oninput="updateIconPreview()"><div class="helper">Leave empty to auto-fetch icon from the website</div>' + iconPreviewHtml + '</div>' +
+      '<div class="form-group"><label>Category *</label><select id="chatCategory">' + categories.map(c => '<option value="' + c + '"' + (existing?.category === c ? ' selected' : '') + '>' + categoryIcon(c) + ' ' + c.charAt(0).toUpperCase() + c.slice(1) + '</option>').join('') + '</select></div>' +
+      '<div class="form-group"><label>Description / Notes</label><textarea id="chatNotes" placeholder="What is this chat for? What did you accomplish?" rows="4">' + esc(existing?.notes || '') + '</textarea></div>' +
+      '<div class="form-group"><label>Tags (comma-separated)</label><input type="text" id="chatTags" placeholder="ai, youtube, thumbnail, tutorial" value="' + escapeAttr((existing?.tags || []).join(', ')) + '"></div>' +
+      '<div class="checkbox-group" style="margin-top:16px;">' +
+        '<label class="checkbox-item"><input type="checkbox" id="chatPinned"' + (existing?.pinned ? ' checked' : '') + '> <i class="fas fa-thumbtack"></i> Pin to top</label>' +
+        '<label class="checkbox-item"><input type="checkbox" id="chatFavorite"' + (existing?.favorite ? ' checked' : '') + '> <i class="fas fa-star"></i> Mark as favorite</label>' +
+      '</div>' +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveChat(\'' + (editId || '') + '\')"><i class="fas fa-save"></i> ' + (existing ? 'Update' : 'Save Chat') + '</button></div>'
+  );
+  if (existing) {
+    handleChatUrlInput(existing.url);
+    if (existing.customIconUrl) updateIconPreview();
+  }
+}
+
+function handleChatUrlInput(url) {
+  const p = detectChatPlatform(url);
+  const el = document.getElementById('chatPlatformDetected');
+  if (p !== 'other') {
+    el.innerHTML = '<span class="platform-detected" style="background:' + platformColor(p) + '20;color:' + platformColor(p) + ';"><i class="fas ' + platformIcon(p) + '"></i> ' + platformLabel(p) + ' detected</span>';
+  } else {
+    el.innerHTML = '';
+  }
+  updateIconPreview();
+}
+
+function updateIconPreview() {
+  const container = document.getElementById('iconPreviewContainer');
+  const imgContainer = document.getElementById('iconPreviewImg');
+  const sourceEl = document.getElementById('iconPreviewSource');
+  const customUrl = document.getElementById('chatIconUrl')?.value?.trim();
+  const chatUrl = document.getElementById('chatUrl')?.value?.trim();
+
+  if (!chatUrl && !customUrl) {
+    container.style.display = 'none';
+    return;
+  }
+
+  container.style.display = 'flex';
+  const iconUrl = customUrl || getChatIcon(chatUrl, null);
+  
+  if (iconUrl) {
+    imgContainer.innerHTML = '<img src="' + escapeAttr(iconUrl) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><span class="fallback" style="display:none;">?</span>';
+    if (customUrl) {
+      sourceEl.innerHTML = '<i class="fas fa-check-circle"></i> Custom icon';
+    } else {
+      sourceEl.innerHTML = '<i class="fas fa-check-circle"></i> Auto-fetched from ' + extractDomain(chatUrl);
+    }
+  } else {
+    const platform = detectChatPlatform(chatUrl);
+    imgContainer.innerHTML = '<span class="fallback" style="font-size:20px;">' + platformInitial(platform) + '</span>';
+    sourceEl.innerHTML = 'Using platform default icon';
+  }
+}
+
+function detectChatPlatformUI(url) {
+  const p = detectChatPlatform(url);
+  const el = document.getElementById('chatPlatformDetected');
+  if (p !== 'other') {
+    el.innerHTML = '<span class="platform-detected" style="background:' + platformColor(p) + '20;color:' + platformColor(p) + ';"><i class="fab ' + platformIcon(p) + '"></i> ' + platformLabel(p) + ' detected</span>';
+  } else {
+    el.innerHTML = '';
+  }
+}
+
+function saveChat(editId) {
+  const url = document.getElementById('chatUrl').value.trim();
+  const title = document.getElementById('chatTitle').value.trim();
+  if (!url || !title) { showToast('URL and Title are required', 'error'); return; }
+
+  const chats = getData('chats');
+  const pinnedCount = chats.filter(c => c.pinned && c.id !== editId).length;
+  const wantsPinned = document.getElementById('chatPinned').checked;
+  
+  if (wantsPinned && pinnedCount >= 6) {
+    showToast('Maximum 6 pinned chats allowed', 'error');
+    return;
+  }
+
+  const chatData = {
+    id: editId || uuid(),
+    url,
+    platform: detectChatPlatform(url),
+    title,
+    customIconUrl: document.getElementById('chatIconUrl').value.trim() || '',
+    category: document.getElementById('chatCategory').value,
+    notes: document.getElementById('chatNotes').value.trim(),
+    tags: document.getElementById('chatTags').value.split(',').map(t => t.trim()).filter(Boolean),
+    pinned: wantsPinned,
+    favorite: document.getElementById('chatFavorite').checked,
+    addedAt: editId ? (chats.find(c => c.id === editId)?.addedAt || Date.now()) : Date.now(),
+    lastUsed: Date.now(),
+    usageCount: editId ? (chats.find(c => c.id === editId)?.usageCount || 0) : 0
+  };
+
+  if (editId) {
+    const idx = chats.findIndex(c => c.id === editId);
+    if (idx >= 0) chats[idx] = chatData;
+  } else {
+    chats.unshift(chatData);
+  }
+  setData('chats', chats);
+  closeModal();
+  showToast(editId ? 'Chat updated!' : 'Chat saved!', 'success');
+  logActivity('<i class="fas fa-comments"></i>', (editId ? 'Updated' : 'Added') + ' AI chat: ' + title, platformColor(chatData.platform));
+  bumpStreak();
+  renderCurrentPage();
+}
+
+// =============================================
+// REFERENCE VIDEOS
+// =============================================
+let videoPlatformFilter = 'all';
+let videoCatFilter = 'all';
+
+function renderVideos() {
+  const refs = getData('references');
+  const platforms = ['all', 'youtube', 'tiktok', 'instagram', 'facebook', 'vimeo'];
+  const categories = ['all', 'style', 'editing', 'hook', 'transition', 'idea', 'audio', 'thumbnail', 'other'];
+
+  document.getElementById('videoPlatformFilter').innerHTML = platforms.map(p =>
+    '<button class="filter-chip' + (videoPlatformFilter === p ? ' active' : '') + '" onclick="videoPlatformFilter=\'' + p + '\';renderVideos();">' + (p === 'all' ? 'All Platforms' : platformLabel(p)) + '</button>'
+  ).join('');
+
+  document.getElementById('videoCategoryFilter').innerHTML = categories.map(c =>
+    '<button class="filter-chip' + (videoCatFilter === c ? ' active' : '') + '" onclick="videoCatFilter=\'' + c + '\';renderVideos();">' + (c === 'all' ? 'All Categories' : categoryIcon(c) + ' ' + c) + '</button>'
+  ).join('');
+
+  let filtered = refs;
+  if (videoPlatformFilter !== 'all') filtered = filtered.filter(r => r.platform === videoPlatformFilter);
+  if (videoCatFilter !== 'all') filtered = filtered.filter(r => r.category === videoCatFilter);
+
+  const container = document.getElementById('videosContainer');
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">🎬</div><h3>No reference videos yet!</h3><p>Save your first inspiration video.</p><button class="btn btn-primary" onclick="openAddVideo()"><i class="fas fa-plus"></i> Save First Reference</button></div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map((ref, i) => {
+    const thumb = ref.thumbnailUrl || (ref.platform === 'youtube' ? getYouTubeThumbnail(ref.url) : null);
+    const thumbHtml = thumb
+      ? '<img src="' + escapeAttr(thumb) + '" alt="" onerror="this.style.display=\'none\';this.parentElement.querySelector(\'.play-overlay\').innerHTML=\'<i class=&quot;fab ' + platformIcon(ref.platform) + '&quot; style=&quot;font-size:48px;color:' + platformColor(ref.platform) + '&quot;></i>\';this.parentElement.querySelector(\'.play-overlay\').style.opacity=1;this.parentElement.querySelector(\'.play-overlay\').style.background=\'var(--bg-surface-2)\'"><div class="play-overlay"><i class="fas fa-play-circle"></i></div>'
+      : '<div class="play-overlay" style="opacity:1;background:var(--bg-surface-2);"><i class="fab ' + platformIcon(ref.platform) + '" style="font-size:48px;color:' + platformColor(ref.platform) + '"></i></div>';
+    return '<div class="card video-card stagger-in" style="animation-delay:' + (i*50) + 'ms;">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span class="badge badge-platform badge-' + ref.platform + '">' + platformLabel(ref.platform) + '</span>' + dropdownMenu(ref.id, 'reference') + '</div>' +
+      '<div class="video-thumbnail" onclick="window.open(\'' + escapeAttr(ref.url) + '\',\'_blank\')">' + thumbHtml + '</div>' +
+      (ref.notes ? '<p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px;">' + esc(ref.notes).substring(0, 120) + '</p>' : '') +
+      '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text-muted);"><span>📅 ' + timeAgo(ref.addedAt) + '</span><span class="badge badge-category">' + categoryIcon(ref.category) + ' ' + (ref.category||'') + '</span></div>' +
+      '<div style="display:flex;gap:8px;margin-top:10px;"><button class="btn btn-sm btn-secondary" onclick="window.open(\'' + escapeAttr(ref.url) + '\',\'_blank\')"><i class="fas fa-play"></i> Watch</button><button class="btn btn-sm btn-ghost" onclick="convertRefToIdea(\'' + ref.id + '\')"><i class="fas fa-lightbulb"></i> Use Idea</button></div></div>';
+  }).join('');
+}
+
+function openAddVideo(editId) {
+  const existing = editId ? getData('references').find(r => r.id === editId) : null;
+  const categories = ['style', 'editing', 'hook', 'transition', 'idea', 'audio', 'thumbnail', 'other'];
+  openModal(
+    '<div class="modal-header"><h2>' + (existing ? 'Edit Reference' : '🎬 Save New Reference') + '</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<div class="form-group"><label>Video URL *</label><input type="url" id="videoUrl" placeholder="Paste video URL..." value="' + escapeAttr(existing?.url || '') + '" oninput="detectVideoPlatformUI(this.value)"><div id="videoPlatformDetected" class="helper"></div></div>' +
+      '<div class="form-group"><label>Custom Thumbnail URL (optional)</label><input type="url" id="videoThumb" placeholder="Paste image URL (auto-fetched for YouTube)" value="' + escapeAttr(existing?.thumbnailUrl || '') + '"></div>' +
+      '<div class="form-group"><label>Reference Notes *</label><textarea id="videoNotes" placeholder="Why did you save this? What to learn from it?">' + esc(existing?.notes || '') + '</textarea></div>' +
+      '<div class="form-group"><label>Category *</label><select id="videoCategory">' + categories.map(c => '<option value="' + c + '"' + (existing?.category === c ? ' selected' : '') + '>' + categoryIcon(c) + ' ' + c.charAt(0).toUpperCase() + c.slice(1) + '</option>').join('') + '</select></div>' +
+      '<div class="form-group"><label>Tags (comma-separated)</label><input type="text" id="videoTags" placeholder="editing, hook, style" value="' + escapeAttr((existing?.tags || []).join(', ')) + '"></div>' +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveVideo(\'' + (editId || '') + '\')"><i class="fas fa-save"></i> ' + (existing ? 'Update' : 'Save Reference') + '</button></div>'
+  );
+  if (existing) detectVideoPlatformUI(existing.url);
+}
+
+function detectVideoPlatformUI(url) {
+  const p = detectVideoPlatform(url);
+  const el = document.getElementById('videoPlatformDetected');
+  if (p !== 'other') {
+    el.innerHTML = '<span class="platform-detected" style="background:' + platformColor(p) + '20;color:' + platformColor(p) + ';"><i class="fab ' + platformIcon(p) + '"></i> ' + platformLabel(p) + ' detected</span>';
+  } else { el.innerHTML = ''; }
+}
+
+function saveVideo(editId) {
+  const url = document.getElementById('videoUrl').value.trim();
+  const notes = document.getElementById('videoNotes').value.trim();
+  if (!url || !notes) { showToast('URL and Notes are required', 'error'); return; }
+
+  const refs = getData('references');
+  const platform = detectVideoPlatform(url);
+  let thumb = document.getElementById('videoThumb').value.trim();
+  if (!thumb && platform === 'youtube') thumb = getYouTubeThumbnail(url) || '';
+
+  const refData = {
+    id: editId || uuid(),
+    url, platform,
+    videoId: platform === 'youtube' ? extractYouTubeId(url) : '',
+    thumbnailUrl: thumb,
+    title: '',
+    notes,
+    category: document.getElementById('videoCategory').value,
+    tags: document.getElementById('videoTags').value.split(',').map(t => t.trim()).filter(Boolean),
+    addedAt: editId ? (refs.find(r => r.id === editId)?.addedAt || Date.now()) : Date.now(),
+    status: 'new'
+  };
+
+  if (editId) {
+    const idx = refs.findIndex(r => r.id === editId);
+    if (idx >= 0) refs[idx] = refData;
+  } else {
+    refs.unshift(refData);
+  }
+  setData('references', refs);
+  closeModal();
+  showToast(editId ? 'Reference updated!' : 'Reference saved!', 'success');
+  logActivity('<i class="fas fa-film"></i>', (editId ? 'Updated' : 'Saved') + ' ' + platformLabel(platform) + ' reference', platformColor(platform));
+  bumpStreak();
+  renderCurrentPage();
+}
+
+function convertRefToIdea(refId) {
+  const refs = getData('references');
+  const ref = refs.find(r => r.id === refId);
+  if (!ref) return;
+  const ideas = getData('ideas');
+  const idea = { id: uuid(), text: 'From ' + platformLabel(ref.platform) + ' reference: ' + ref.notes, tags: ref.tags || [], status: 'new', createdAt: Date.now(), convertedToContentId: null };
+  ideas.unshift(idea);
+  setData('ideas', ideas);
+  showToast('Idea created from reference!', 'success');
+  logActivity('<i class="fas fa-lightbulb"></i>', 'Created idea from reference', 'var(--cat-idea)');
+}
+
+// =============================================
+// CONTENT CALENDAR
+// =============================================
+let calendarView = 'grid';
+let currentWeekOffset = 0;
+
+function getWeekStart(offset) {
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - ((dayOfWeek + 6) % 7) + (offset * 7));
+  monday.setHours(0, 0, 0, 0);
+  return monday;
+}
+
+function getWeekLabel(monday) {
+  const sunday = new Date(monday);
+  sunday.setDate(monday.getDate() + 6);
+  return formatDate(monday) + ' — ' + formatDate(sunday);
+}
+
+function getWeekKey(monday) {
+  return monday.toISOString().split('T')[0];
+}
+
+function renderCalendar() {
+  if (calendarView === 'grid') renderWeeklyGrid();
+  else if (calendarView === 'kanban') renderKanban();
+  else if (calendarView === 'plan') renderWeeklyPlan();
+}
+
+function setCalendarView(view) {
+  calendarView = view;
+  document.getElementById('viewGrid').classList.toggle('active', view === 'grid');
+  document.getElementById('viewKanban').classList.toggle('active', view === 'kanban');
+  document.getElementById('viewPlan').classList.toggle('active', view === 'plan');
+  document.getElementById('calendarGrid').style.display = view === 'grid' ? 'grid' : 'none';
+  document.getElementById('kanbanBoard').style.display = view === 'kanban' ? 'flex' : 'none';
+  document.getElementById('weeklyPlanView').style.display = view === 'plan' ? 'block' : 'none';
+  document.getElementById('addWeeklyPlanBtn').style.display = view === 'plan' ? 'inline-flex' : 'none';
+  renderCalendar();
+}
+
+function changeWeek(dir) {
+  if (dir === 0) currentWeekOffset = 0;
+  else currentWeekOffset += dir;
+  renderCalendar();
+}
+
+function renderWeeklyGrid() {
+  const monday = getWeekStart(currentWeekOffset);
+  const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
+  document.getElementById('calendarWeekLabel').textContent = formatDate(monday) + ' — ' + formatDate(sunday);
+
+  const content = getData('content');
+  const today = new Date().toDateString();
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  let html = '';
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday); d.setDate(monday.getDate() + i);
+    const dateStr = d.toISOString().split('T')[0];
+    const isToday = d.toDateString() === today;
+    const dayContent = content.filter(c => c.scheduledDate === dateStr);
+    html += '<div class="day-column"><div class="day-header' + (isToday ? ' today' : '') + '"><span>' + days[i] + '</span><span class="day-num">' + d.getDate() + '</span></div><div class="day-body">' +
+      dayContent.map(c => '<div class="day-content-chip" style="border-left-color:' + (c.status ? 'var(--status-' + c.status + ')' : 'var(--primary)') + ';" onclick="viewContent(\'' + c.id + '\')" title="' + escapeAttr(c.title) + '"><div style="display:flex;align-items:center;gap:4px;"><span class="status-dot status-' + c.status + '"></span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + esc(c.title).substring(0, 20) + '</span></div></div>').join('') +
+      '<button class="day-add-btn" onclick="openAddContent(null,\'' + dateStr + '\')">+</button></div></div>';
+  }
+  document.getElementById('calendarGrid').innerHTML = html;
+}
+
+function renderKanban() {
+  const monday = getWeekStart(currentWeekOffset);
+  const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
+  document.getElementById('calendarWeekLabel').textContent = formatDate(monday) + ' — ' + formatDate(sunday);
+
+  const content = getData('content');
+  const statuses = [
+    { key: 'idea', label: '💡 Idea', color: 'var(--status-idea)' },
+    { key: 'scripting', label: '✍️ Scripting', color: 'var(--status-scripting)' },
+    { key: 'filming', label: '🎬 Filming', color: 'var(--status-filming)' },
+    { key: 'editing', label: '✂️ Editing', color: 'var(--status-editing)' },
+    { key: 'ready', label: '✅ Ready', color: 'var(--status-ready)' },
+    { key: 'posted', label: '📢 Posted', color: 'var(--status-posted)' }
+  ];
+
+  document.getElementById('kanbanBoard').innerHTML = statuses.map(s => {
+    const items = content.filter(c => c.status === s.key);
+    return '<div class="kanban-column" data-status="' + s.key + '" ondragover="event.preventDefault();this.classList.add(\'drag-over\')" ondragleave="this.classList.remove(\'drag-over\')" ondrop="handleKanbanDrop(event, \'' + s.key + '\')">' +
+      '<div class="kanban-column-header" style="border-bottom-color:' + s.color + ';"><span class="status-dot status-' + s.key + '"></span>' + s.label + '<span class="count">' + items.length + '</span></div>' +
+      '<div class="kanban-column-body">' +
+        items.map(c => '<div class="kanban-card" draggable="true" ondragstart="handleKanbanDragStart(event, \'' + c.id + '\')" onclick="viewContent(\'' + c.id + '\')">' +
+          '<h4>' + esc(c.title) + '</h4>' +
+          '<div class="kanban-meta">' +
+            (c.platforms ? c.platforms.map(p => '<i class="fab ' + platformIcon(p) + '" style="color:' + platformColor(p) + ';"></i>').join('') : '') +
+            (c.scheduledDate ? '<span>📅 ' + formatDate(c.scheduledDate) + '</span>' : '') +
+          '</div></div>').join('') +
+      '<div class="kanban-add-btn" onclick="openAddContent(null, null, \'' + s.key + '\')"><i class="fas fa-plus"></i> Add</div></div></div>';
+  }).join('');
+}
+
+let draggedItemId = null;
+function handleKanbanDragStart(e, id) {
+  draggedItemId = id;
+  e.dataTransfer.effectAllowed = 'move';
+  e.target.classList.add('dragging');
+  setTimeout(() => e.target.classList.remove('dragging'), 0);
+}
+function handleKanbanDrop(e, newStatus) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if (!draggedItemId) return;
+  const content = getData('content');
+  const item = content.find(c => c.id === draggedItemId);
+  if (item) {
+    item.status = newStatus;
+    item.updatedAt = Date.now();
+    setData('content', content);
+    showToast('Moved to ' + statusLabel(newStatus), 'success');
+    logActivity('<i class="fas fa-arrows-alt"></i>', 'Moved "' + item.title + '" to ' + statusLabel(newStatus), 'var(--status-' + newStatus + ')');
+    renderKanban();
+  }
+  draggedItemId = null;
+}
+
+// =============================================
+// WEEKLY PLAN
+// =============================================
+function renderWeeklyPlan() {
+  const monday = getWeekStart(currentWeekOffset);
+  const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
+  document.getElementById('calendarWeekLabel').textContent = getWeekLabel(monday);
+
+  const weekKey = getWeekKey(monday);
+  const plans = getData('weekly_plans');
+  const currentPlan = plans.find(p => p.weekStart === weekKey);
+  const archivePlans = plans.filter(p => p.weekStart !== weekKey).sort((a, b) => new Date(b.weekStart) - new Date(a.weekStart));
+
+  const container = document.getElementById('weeklyPlanView');
+  let html = '';
+
+  // Header
+  html += '<div class="weekly-plan-header">' +
+    '<div><h2><i class="fas fa-clipboard-list"></i> Weekly Content Plan</h2>' +
+    '<p>Paste or type your week\'s content plan in one place</p></div>' +
+    '</div>';
+
+  // Current Week Plan
+  if (currentPlan) {
+    html += renderWeeklyPlanCard(currentPlan, true);
+  } else {
+    html += '<div class="weekly-plan-empty">' +
+      '<div class="empty-icon"><i class="fas fa-clipboard-list"></i></div>' +
+      '<h3>No plan for this week yet</h3>' +
+      '<p>Create a weekly plan to organize all your content ideas, video titles, and notes in one place.</p>' +
+      '<button class="btn btn-primary" onclick="openAddWeeklyPlan()"><i class="fas fa-plus"></i> Create Plan for This Week</button>' +
+    '</div>';
+  }
+
+  // Archive Section
+  if (archivePlans.length > 0) {
+    html += '<div class="weekly-plan-archive">' +
+      '<h3><i class="fas fa-archive"></i> Previous Weeks</h3>' +
+      '<div class="archive-grid">' +
+      archivePlans.slice(0, 12).map((plan, i) => renderArchiveCard(plan, i)).join('') +
+      '</div></div>';
+  }
+
+  container.innerHTML = html;
+}
+
+function renderWeeklyPlanCard(plan, isCurrent) {
+  const priorityLabels = { high: '🔴 High Priority', medium: '🟡 Medium', low: '🟢 Low' };
+  const priorityClass = plan.priority || '';
+
+  let contentHtml = formatWeeklyPlanContent(plan.content);
+  const contentLength = plan.content.length;
+  let fontClass = 'font-md';
+  if (contentLength > 2000) fontClass = 'font-sm';
+  if (contentLength < 500) fontClass = 'font-lg';
+
+  return '<div class="weekly-plan-card stagger-in">' +
+    '<div class="weekly-plan-card-strip"></div>' +
+    '<div class="weekly-plan-card-header">' +
+      '<div>' +
+        '<div class="weekly-plan-card-title"><i class="fas fa-calendar-week"></i> Week of ' + plan.weekLabel + '</div>' +
+        (plan.title ? '<div class="weekly-plan-card-subtitle">"' + esc(plan.title) + '"</div>' : '') +
+      '</div>' +
+      '<div class="weekly-plan-card-meta">' +
+        (plan.priority ? '<span class="weekly-plan-priority ' + priorityClass + '">' + priorityLabels[plan.priority] + '</span>' : '') +
+        (plan.tags ? plan.tags.map(t => '<span class="weekly-plan-tag">#' + esc(t) + '</span>').join('') : '') +
+      '</div>' +
+    '</div>' +
+    '<div class="weekly-plan-card-body">' +
+      '<div class="weekly-plan-content ' + fontClass + '">' + contentHtml + '</div>' +
+    '</div>' +
+    '<div class="weekly-plan-card-footer">' +
+      '<div class="footer-left">' +
+        '<button class="btn btn-sm btn-secondary" onclick="copyWeeklyPlan(\'' + plan.id + '\')"><i class="fas fa-copy"></i> Copy All</button>' +
+        '<button class="btn btn-sm btn-secondary" onclick="openAddWeeklyPlan(\'' + plan.id + '\')"><i class="fas fa-edit"></i> Edit</button>' +
+        '<button class="btn btn-sm btn-ghost" onclick="deleteWeeklyPlan(\'' + plan.id + '\')"><i class="fas fa-trash"></i></button>' +
+        '<button class="btn btn-sm btn-ghost" onclick="shareWeeklyPlan(\'' + plan.id + '\')"><i class="fas fa-share-alt"></i></button>' +
+        '<button class="btn btn-sm btn-ghost" onclick="printWeeklyPlan(\'' + plan.id + '\')"><i class="fas fa-print"></i></button>' +
+        '<button class="btn btn-sm btn-primary" onclick="openConvertIdeasModal(\'' + plan.id + '\')"><i class="fas fa-lightbulb"></i> Convert Ideas</button>' +
+      '</div>' +
+      '<div class="footer-right">' +
+        'Created: ' + timeAgo(plan.createdAt) + (plan.updatedAt !== plan.createdAt ? ' | Updated: ' + timeAgo(plan.updatedAt) : '') +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function renderArchiveCard(plan, index) {
+  const preview = plan.content.substring(0, 120).replace(/\n/g, ' ');
+  return '<div class="archive-card stagger-in" style="animation-delay:' + (index * 40) + 'ms;" onclick="viewWeeklyPlan(\'' + plan.id + '\')">' +
+    '<div class="archive-card-header">' +
+      '<span class="archive-card-date">📅 ' + plan.weekLabel + '</span>' +
+      (plan.priority ? '<span class="weekly-plan-priority ' + plan.priority + '" style="font-size:10px;padding:2px 8px;">' + plan.priority.charAt(0).toUpperCase() + plan.priority.slice(1) + '</span>' : '') +
+    '</div>' +
+    (plan.title ? '<div class="archive-card-title">' + esc(plan.title) + '</div>' : '') +
+    '<div class="archive-card-preview">' + esc(preview) + (plan.content.length > 120 ? '...' : '') + '</div>' +
+    '<div class="archive-card-footer">' + plan.content.length + ' characters</div>' +
+  '</div>';
+}
+
+function formatWeeklyPlanContent(text) {
+  let html = esc(text);
+  // Convert URLs to links
+  html = html.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color:var(--primary);text-decoration:underline;">$1</a>');
+  // Bold text between ** or words followed by colon at start of line (headers)
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--text-primary);">$1</strong>');
+  html = html.replace(/^([A-Z][^:\n]{0,40}:)/gm, '<strong style="color:var(--primary);font-size:1.05em;">$1</strong>');
+  // Convert bullet points
+  html = html.replace(/^[\s]*[-•]\s+(.+)/gm, '<div style="padding-left:20px;position:relative;margin:4px 0;"><span style="position:absolute;left:6px;color:var(--primary);font-weight:bold;">•</span>$1</div>');
+  // Convert numbered items
+  html = html.replace(/^[\s]*(\d+)[\.\)]\s+(.+)/gm, '<div style="padding-left:28px;position:relative;margin:6px 0;"><span style="position:absolute;left:0;font-weight:700;color:var(--primary);font-family:var(--font-display);">$1.</span>$2</div>');
+  return html;
+}
+
+function openAddWeeklyPlan(editId) {
+  const plans = getData('weekly_plans');
+  const existing = editId ? plans.find(p => p.id === editId) : null;
+  
+  // Generate week options (current week + 4 weeks forward, 8 weeks back)
+  let weekOptions = '';
+  for (let i = -8; i <= 4; i++) {
+    const monday = getWeekStart(i);
+    const weekKey = getWeekKey(monday);
+    const label = getWeekLabel(monday);
+    const isSelected = existing ? existing.weekStart === weekKey : i === currentWeekOffset;
+    const hasPlan = !existing && plans.some(p => p.weekStart === weekKey);
+    weekOptions += '<option value="' + weekKey + '"' + (isSelected ? ' selected' : '') + (hasPlan ? ' disabled' : '') + '>' + label + (hasPlan ? ' (has plan)' : '') + (i === 0 ? ' (this week)' : '') + '</option>';
+  }
+
+  openModal(
+    '<div class="modal-header"><h2>' + (existing ? '✏️ Edit Weekly Plan' : '📝 New Weekly Plan') + '</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<div class="form-group"><label>Week</label>' +
+        '<select id="weeklyPlanWeek">' + weekOptions + '</select>' +
+      '</div>' +
+      '<div class="form-group"><label>Week Title / Theme (optional)</label>' +
+        '<input type="text" id="weeklyPlanTitle" placeholder="e.g., AI Tools Focus Week" value="' + escapeAttr(existing?.title || '') + '">' +
+      '</div>' +
+      '<div class="form-group"><label>Content Plan *</label>' +
+        '<textarea id="weeklyPlanContent" rows="15" placeholder="Paste your weekly content plan here...\n\nExample:\n\nVideos to make:\n1. 10 AI Tools You Must Try\n2. Best Free Design Tools\n3. Coding for Beginners\n\nIdeas:\n- Something about ChatGPT tips\n- Tutorial on Canva\n\nNotes:\nFocus on beginner-friendly content this week." style="font-family:var(--font-mono);font-size:13px;min-height:300px;" oninput="updateCharCount()">' + esc(existing?.content || '') + '</textarea>' +
+        '<div style="display:flex;justify-content:space-between;margin-top:4px;">' +
+          '<button class="btn btn-sm btn-ghost" onclick="pasteToWeeklyPlan()"><i class="fas fa-clipboard"></i> Paste from Clipboard</button>' +
+          '<span class="char-counter" id="weeklyPlanCharCount">0 characters</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="form-group"><label>Tags (optional, comma-separated)</label>' +
+        '<input type="text" id="weeklyPlanTags" placeholder="ai, tutorial, beginner" value="' + escapeAttr((existing?.tags || []).join(', ')) + '">' +
+      '</div>' +
+      '<div class="form-group"><label>Priority Focus (optional)</label>' +
+        '<div class="priority-selector">' +
+          '<button type="button" class="priority-btn high' + (existing?.priority === 'high' ? ' active' : '') + '" onclick="selectPriority(\'high\')">🔴 High</button>' +
+          '<button type="button" class="priority-btn medium' + (existing?.priority === 'medium' ? ' active' : '') + '" onclick="selectPriority(\'medium\')">🟡 Medium</button>' +
+          '<button type="button" class="priority-btn low' + (existing?.priority === 'low' ? ' active' : '') + '" onclick="selectPriority(\'low\')">🟢 Low</button>' +
+        '</div>' +
+        '<input type="hidden" id="weeklyPlanPriority" value="' + (existing?.priority || '') + '">' +
+      '</div>' +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveWeeklyPlan(\'' + (editId || '') + '\')"><i class="fas fa-save"></i> ' + (existing ? 'Update Plan' : 'Save Weekly Plan') + '</button></div>'
+  );
+  updateCharCount();
+}
+
+function updateCharCount() {
+  const content = document.getElementById('weeklyPlanContent')?.value || '';
+  const counter = document.getElementById('weeklyPlanCharCount');
+  if (counter) counter.textContent = content.length + ' characters';
+}
+
+function selectPriority(priority) {
+  document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+  const current = document.getElementById('weeklyPlanPriority').value;
+  if (current === priority) {
+    document.getElementById('weeklyPlanPriority').value = '';
+  } else {
+    document.getElementById('weeklyPlanPriority').value = priority;
+    document.querySelector('.priority-btn.' + priority).classList.add('active');
+  }
+}
+
+async function pasteToWeeklyPlan() {
+  try {
+    const text = await navigator.clipboard.readText();
+    const el = document.getElementById('weeklyPlanContent');
+    if (el) { el.value += text; updateCharCount(); showToast('Pasted from clipboard!', 'success'); }
+  } catch { showToast('Could not read clipboard. Try Ctrl+V instead.', 'error'); }
+}
+
+function saveWeeklyPlan(editId) {
+  const weekKey = document.getElementById('weeklyPlanWeek').value;
+  const content = document.getElementById('weeklyPlanContent').value.trim();
+  
+  if (!content) { showToast('Content plan is required', 'error'); return; }
+  
+  const plans = getData('weekly_plans');
+  const monday = new Date(weekKey);
+  const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
+  
+  // Check if week already has a plan (when creating new)
+  if (!editId && plans.some(p => p.weekStart === weekKey)) {
+    showToast('This week already has a plan. Edit it instead.', 'error');
+    return;
+  }
+
+  const planData = {
+    id: editId || uuid(),
+    weekStart: weekKey,
+    weekEnd: sunday.toISOString().split('T')[0],
+    weekLabel: getWeekLabel(monday),
+    title: document.getElementById('weeklyPlanTitle').value.trim(),
+    content,
+    tags: document.getElementById('weeklyPlanTags').value.split(',').map(t => t.trim()).filter(Boolean),
+    priority: document.getElementById('weeklyPlanPriority').value || null,
+    createdAt: editId ? (plans.find(p => p.id === editId)?.createdAt || Date.now()) : Date.now(),
+    updatedAt: Date.now(),
+    characterCount: content.length
+  };
+
+  if (editId) {
+    const idx = plans.findIndex(p => p.id === editId);
+    if (idx >= 0) plans[idx] = planData;
+  } else {
+    plans.unshift(planData);
+  }
+  
+  setData('weekly_plans', plans);
+  closeModal();
+  showToast(editId ? 'Weekly plan updated!' : 'Weekly plan saved!', 'success');
+  logActivity('<i class="fas fa-clipboard-list"></i>', (editId ? 'Updated' : 'Created') + ' weekly plan: ' + planData.weekLabel, 'var(--primary)');
+  bumpStreak();
+  renderWeeklyPlan();
+}
+
+function copyWeeklyPlan(id) {
+  const plans = getData('weekly_plans');
+  const plan = plans.find(p => p.id === id);
+  if (!plan) return;
+  navigator.clipboard.writeText(plan.content)
+    .then(() => showToast('Plan copied to clipboard!', 'success'))
+    .catch(() => showToast('Failed to copy', 'error'));
+}
+
+function deleteWeeklyPlan(id) {
+  showConfirm('Delete Weekly Plan', 'Are you sure you want to delete this weekly plan? This cannot be undone.', () => {
+    let plans = getData('weekly_plans');
+    plans = plans.filter(p => p.id !== id);
+    setData('weekly_plans', plans);
+    showToast('Weekly plan deleted', 'success');
+    closeFullview();
+    renderWeeklyPlan();
+  });
+}
+
+function shareWeeklyPlan(id) {
+  const plans = getData('weekly_plans');
+  const plan = plans.find(p => p.id === id);
+  if (!plan) return;
+  
+  const shareText = '📅 Weekly Plan: ' + plan.weekLabel + '\n\n' + plan.content;
+  
+  if (navigator.share) {
+    navigator.share({ title: 'Weekly Plan', text: shareText })
+      .catch(() => {});
+  } else {
+    navigator.clipboard.writeText(shareText)
+      .then(() => showToast('Plan copied to clipboard for sharing!', 'success'))
+      .catch(() => showToast('Failed to copy', 'error'));
+  }
+}
+
+function printWeeklyPlan(id) {
+  const plans = getData('weekly_plans');
+  const plan = plans.find(p => p.id === id);
+  if (!plan) return;
+  
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write('<html><head><title>Weekly Plan - ' + plan.weekLabel + '</title>');
+  printWindow.document.write('<style>body{font-family:Georgia,serif;padding:40px;line-height:1.8;max-width:800px;margin:0 auto;}h1{font-size:24px;margin-bottom:8px;}h2{color:#666;font-size:14px;margin-bottom:24px;}pre{white-space:pre-wrap;font-family:inherit;font-size:14px;}</style>');
+  printWindow.document.write('</head><body>');
+  printWindow.document.write('<h1>📅 ' + plan.weekLabel + '</h1>');
+  if (plan.title) printWindow.document.write('<h2>' + esc(plan.title) + '</h2>');
+  printWindow.document.write('<pre>' + esc(plan.content) + '</pre>');
+  printWindow.document.write('</body></html>');
+  printWindow.document.close();
+  printWindow.print();
+}
+
+function viewWeeklyPlan(id) {
+  const plans = getData('weekly_plans');
+  const plan = plans.find(p => p.id === id);
+  if (!plan) return;
+  
+  const overlay = document.getElementById('fullviewOverlay');
+  document.getElementById('fullviewTitle').textContent = 'Week of ' + plan.weekLabel;
+  document.getElementById('fullviewEditBtn').onclick = () => { closeFullview(); openAddWeeklyPlan(plan.id); };
+
+  let fontClass = 'font-md';
+  if (plan.content.length > 2000) fontClass = 'font-sm';
+  if (plan.content.length < 500) fontClass = 'font-lg';
+
+  let html = '<div class="fullview-meta">' +
+    '<span style="font-size:14px;font-weight:600;"><i class="fas fa-calendar-week" style="color:var(--primary);"></i> ' + plan.weekLabel + '</span>' +
+    (plan.title ? '<span style="color:var(--text-secondary);">"' + esc(plan.title) + '"</span>' : '') +
+    (plan.priority ? '<span class="weekly-plan-priority ' + plan.priority + '">' + plan.priority.charAt(0).toUpperCase() + plan.priority.slice(1) + ' Priority</span>' : '') +
+    '</div>';
+
+  html += '<div class="reader-controls">' +
+    '<button class="btn btn-sm btn-ghost" onclick="adjustPlanFontSize(-1)"><i class="fas fa-minus"></i> A</button>' +
+    '<button class="btn btn-sm btn-ghost" onclick="adjustPlanFontSize(1)">A <i class="fas fa-plus"></i></button>' +
+    '<button class="btn btn-sm btn-ghost" onclick="copyWeeklyPlan(\'' + id + '\')"><i class="fas fa-copy"></i> Copy</button>' +
+    '</div>';
+
+  html += '<div class="weekly-plan-content ' + fontClass + '" id="fullviewPlanContent" style="background:var(--bg-surface-2);padding:24px;border-radius:var(--radius-md);">' + formatWeeklyPlanContent(plan.content) + '</div>';
+
+  if (plan.tags && plan.tags.length > 0) {
+    html += '<div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px;">' + 
+      plan.tags.map(t => '<span class="weekly-plan-tag">#' + esc(t) + '</span>').join('') + 
+    '</div>';
+  }
+
+  html += '<div class="fullview-footer">' +
+    '<button class="btn btn-secondary" onclick="copyWeeklyPlan(\'' + id + '\')"><i class="fas fa-copy"></i> Copy All</button>' +
+    '<button class="btn btn-secondary" onclick="closeFullview();openAddWeeklyPlan(\'' + id + '\')"><i class="fas fa-edit"></i> Edit</button>' +
+    '<button class="btn btn-primary" onclick="closeFullview();openConvertIdeasModal(\'' + id + '\')"><i class="fas fa-lightbulb"></i> Convert Ideas</button>' +
+    '<button class="btn btn-danger" onclick="deleteWeeklyPlan(\'' + id + '\')"><i class="fas fa-trash"></i> Delete</button>' +
+  '</div>';
+
+  document.getElementById('fullviewBody').innerHTML = html;
+  overlay.classList.add('active');
+}
+
+function adjustPlanFontSize(dir) {
+  const el = document.getElementById('fullviewPlanContent');
+  if (!el) return;
+  const classes = ['font-sm', 'font-md', 'font-lg'];
+  let current = classes.findIndex(c => el.classList.contains(c));
+  if (current === -1) current = 1;
+  el.classList.remove(...classes);
+  current = Math.max(0, Math.min(2, current + dir));
+  el.classList.add(classes[current]);
+}
+
+function openConvertIdeasModal(planId) {
+  const plans = getData('weekly_plans');
+  const plan = plans.find(p => p.id === planId);
+  if (!plan) return;
+
+  // Extract potential content ideas from the plan
+  const ideas = extractIdeasFromPlan(plan.content);
+  
+  if (ideas.length === 0) {
+    showToast('No numbered items or video titles found to convert', 'info');
+    return;
+  }
+
+  let ideasHtml = ideas.map((idea, i) => 
+    '<div class="convert-idea-item">' +
+      '<input type="checkbox" id="convertIdea' + i + '" checked>' +
+      '<label for="convertIdea' + i + '">' + esc(idea) + '</label>' +
+    '</div>'
+  ).join('');
+
+  openModal(
+    '<div class="modal-header"><h2>💡 Convert Ideas to Content</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<p style="color:var(--text-secondary);margin-bottom:16px;">We found these potential content ideas in your weekly plan. Select which ones to add to your calendar as content items.</p>' +
+      '<div class="convert-ideas-list">' + ideasHtml + '</div>' +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="convertSelectedIdeas(' + ideas.length + ', \'' + planId + '\')"><i class="fas fa-plus"></i> Create Selected</button></div>'
+  );
+}
+
+function extractIdeasFromPlan(content) {
+  const ideas = [];
+  const lines = content.split('\n');
+  
+  for (const line of lines) {
+    const trimmed = line.trim();
+    // Match numbered items: "1. Title" or "1) Title"
+    const numberedMatch = trimmed.match(/^\d+[\.\)]\s+(.+)/);
+    if (numberedMatch && numberedMatch[1].length > 5 && numberedMatch[1].length < 100) {
+      ideas.push(numberedMatch[1].trim());
+      continue;
+    }
+    // Match lines containing "Video:" or similar
+    if (/^(video|title|content|topic)[\s:]/i.test(trimmed) && trimmed.length > 10 && trimmed.length < 100) {
+      const title = trimmed.replace(/^(video|title|content|topic)[\s:]+/i, '').trim();
+      if (title.length > 5) ideas.push(title);
+    }
+  }
+  
+  return [...new Set(ideas)].slice(0, 10); // Unique, max 10
+}
+
+function convertSelectedIdeas(count, planId) {
+  const content = getData('content');
+  const plans = getData('weekly_plans');
+  const plan = plans.find(p => p.id === planId);
+  const ideas = extractIdeasFromPlan(plan?.content || '');
+  let created = 0;
+
+  for (let i = 0; i < count; i++) {
+    const checkbox = document.getElementById('convertIdea' + i);
+    if (checkbox && checkbox.checked && ideas[i]) {
+      content.unshift({
+        id: uuid(),
+        title: ideas[i],
+        content: 'Idea from weekly plan: ' + (plan?.weekLabel || ''),
+        platforms: [],
+        status: 'idea',
+        priority: 'medium',
+        scheduledDate: plan?.weekStart || null,
+        publishedDate: null,
+        hashtags: [],
+        thumbnailUrl: '',
+        relatedChats: [],
+        relatedReferences: [],
+        postedUrls: {},
+        createdAt: Date.now(),
+        updatedAt: Date.now()
+      });
+      created++;
+    }
+  }
+
+  setData('content', content);
+  closeModal();
+  showToast(created + ' content item(s) created!', 'success');
+  logActivity('<i class="fas fa-lightbulb"></i>', 'Converted ' + created + ' ideas from weekly plan', 'var(--cat-idea)');
+}
+
+// ===== CONTENT ADD/EDIT =====
+function openAddContent(editId, prefillDate, prefillStatus) {
+  const existing = editId ? getData('content').find(c => c.id === editId) : null;
+  const statuses = ['idea', 'scripting', 'filming', 'editing', 'ready', 'posted'];
+  const platforms = ['youtube', 'tiktok', 'instagram', 'facebook'];
+  const chats = getData('chats');
+  const refs = getData('references');
+
+  openModal(
+    '<div class="modal-header"><h2>' + (existing ? '✏️ Edit Content' : '📝 New Content') + '</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<div class="form-group"><label>Title *</label><input type="text" id="contentTitle" placeholder="E.g., 10 AI Tools You Must Try" value="' + escapeAttr(existing?.title || '') + '"></div>' +
+      '<div class="form-group"><label>Platforms</label><div class="checkbox-group">' +
+        platforms.map(p => '<label class="checkbox-item"><input type="checkbox" value="' + p + '"' + (existing?.platforms?.includes(p) ? ' checked' : '') + ' class="content-platform-cb"> <i class="fab ' + platformIcon(p) + '" style="color:' + platformColor(p) + ';"></i> ' + platformLabel(p) + '</label>').join('') +
+      '</div></div>' +
+      '<div class="form-group"><label>Status</label><select id="contentStatus">' +
+        statuses.map(s => '<option value="' + s + '"' + ((existing?.status || prefillStatus || 'idea') === s ? ' selected' : '') + '>' + statusLabel(s) + '</option>').join('') +
+      '</select></div>' +
+      '<div class="form-group"><label>Scheduled Date</label><input type="date" id="contentDate" value="' + (existing?.scheduledDate || prefillDate || '') + '"></div>' +
+      '<div class="form-group"><label>Content (Paste Here) *</label><textarea id="contentBody" rows="10" placeholder="Paste your content here... Script, idea, detailed notes — any format. Preserves formatting." style="font-family:var(--font-mono);font-size:13px;min-height:200px;">' + esc(existing?.content || '') + '</textarea>' +
+      '<button class="btn btn-sm btn-ghost" onclick="pasteFromClipboard()" style="margin-top:4px;"><i class="fas fa-clipboard"></i> Paste from Clipboard</button></div>' +
+      '<div class="form-group"><label>Hashtags (optional)</label><input type="text" id="contentHashtags" placeholder="#AI #TechTips #Tutorial" value="' + escapeAttr((existing?.hashtags || []).join(' ')) + '"></div>' +
+      '<div class="form-group"><label>Thumbnail URL (optional)</label><input type="url" id="contentThumb" placeholder="Image URL" value="' + escapeAttr(existing?.thumbnailUrl || '') + '"></div>' +
+      (chats.length > 0 ? '<div class="form-group"><label>Related AI Chats</label><select id="contentRelatedChat" multiple style="height:auto;min-height:60px;">' + chats.map(c => '<option value="' + c.id + '"' + (existing?.relatedChats?.includes(c.id) ? ' selected' : '') + '>' + esc(c.title) + '</option>').join('') + '</select><div class="helper">Hold Ctrl/Cmd to select multiple</div></div>' : '') +
+      (refs.length > 0 ? '<div class="form-group"><label>Related References</label><select id="contentRelatedRef" multiple style="height:auto;min-height:60px;">' + refs.map(r => '<option value="' + r.id + '"' + (existing?.relatedReferences?.includes(r.id) ? ' selected' : '') + '>' + esc(r.notes?.substring(0,50) || r.url) + '</option>').join('') + '</select></div>' : '') +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveContent(\'' + (editId || '') + '\')"><i class="fas fa-save"></i> ' + (existing ? 'Update' : 'Save Content') + '</button></div>'
+  );
+}
+
+async function pasteFromClipboard() {
+  try {
+    const text = await navigator.clipboard.readText();
+    const el = document.getElementById('contentBody');
+    if (el) { el.value += text; showToast('Pasted from clipboard!', 'success'); }
+  } catch { showToast('Could not read clipboard. Try Ctrl+V instead.', 'error'); }
+}
+
+function saveContent(editId) {
+  const title = document.getElementById('contentTitle').value.trim();
+  const body = document.getElementById('contentBody').value.trim();
+  if (!title || !body) { showToast('Title and Content are required', 'error'); return; }
+
+  const content = getData('content');
+  const platformCbs = document.querySelectorAll('.content-platform-cb:checked');
+  const platforms = Array.from(platformCbs).map(cb => cb.value);
+  const relChatEl = document.getElementById('contentRelatedChat');
+  const relRefEl = document.getElementById('contentRelatedRef');
+
+  const contentData = {
+    id: editId || uuid(),
+    title,
+    content: body,
+    platforms,
+    status: document.getElementById('contentStatus').value,
+    priority: 'medium',
+    scheduledDate: document.getElementById('contentDate').value || null,
+    publishedDate: null,
+    hashtags: document.getElementById('contentHashtags').value.split(/[\s,]+/).filter(h => h.startsWith('#') || h.length > 0).map(h => h.startsWith('#') ? h : '#' + h).filter(Boolean),
+    thumbnailUrl: document.getElementById('contentThumb').value.trim(),
+    relatedChats: relChatEl ? Array.from(relChatEl.selectedOptions).map(o => o.value) : [],
+    relatedReferences: relRefEl ? Array.from(relRefEl.selectedOptions).map(o => o.value) : [],
+    postedUrls: {},
+    createdAt: editId ? (content.find(c => c.id === editId)?.createdAt || Date.now()) : Date.now(),
+    updatedAt: Date.now()
+  };
+
+  if (editId) {
+    const idx = content.findIndex(c => c.id === editId);
+    if (idx >= 0) content[idx] = contentData;
+  } else {
+    content.unshift(contentData);
+  }
+  setData('content', content);
+  closeModal();
+  showToast(editId ? 'Content updated!' : 'Content saved!', 'success');
+  logActivity('<i class="fas fa-file-alt"></i>', (editId ? 'Updated' : 'Added') + ' content: ' + title, 'var(--primary)');
+  bumpStreak();
+  renderCurrentPage();
+}
+
+// ===== CONTENT FULL VIEW =====
+function viewContent(id) {
+  const content = getData('content');
+  const item = content.find(c => c.id === id);
+  if (!item) return;
+
+  const overlay = document.getElementById('fullviewOverlay');
+  document.getElementById('fullviewTitle').textContent = item.title;
+  document.getElementById('fullviewEditBtn').onclick = () => { closeFullview(); openAddContent(item.id); };
+
+  let fontClass = 'font-lg';
+  if (item.content.length > 1000) fontClass = 'font-md';
+  if (item.content.length > 3000) fontClass = 'font-sm';
+
+  const chats = getData('chats');
+  const refs = getData('references');
+  const relatedChatItems = (item.relatedChats || []).map(cid => chats.find(c => c.id === cid)).filter(Boolean);
+  const relatedRefItems = (item.relatedReferences || []).map(rid => refs.find(r => r.id === rid)).filter(Boolean);
+
+  let html = '';
+  if (item.thumbnailUrl) {
+    html += '<img src="' + escapeAttr(item.thumbnailUrl) + '" style="width:100%;max-height:300px;object-fit:cover;border-radius:var(--radius-md);margin-bottom:20px;" onerror="this.style.display=\'none\'">';
+  }
+  html += '<div class="fullview-meta">';
+  if (item.platforms) html += item.platforms.map(p => '<span class="badge badge-platform badge-' + p + '"><i class="fab ' + platformIcon(p) + '"></i> ' + platformLabel(p) + '</span>').join('');
+  html += '<span class="badge" style="background:var(--status-' + item.status + ')20;color:var(--status-' + item.status + ');">' + statusLabel(item.status) + '</span>';
+  if (item.scheduledDate) html += '<span style="font-size:13px;color:var(--text-muted);">📅 ' + formatDate(item.scheduledDate) + '</span>';
+  html += '</div>';
+
+  html += '<div class="reader-controls"><button class="btn btn-sm btn-ghost" onclick="adjustFontSize(-1)"><i class="fas fa-minus"></i> A</button><button class="btn btn-sm btn-ghost" onclick="adjustFontSize(1)">A <i class="fas fa-plus"></i></button><button class="btn btn-sm btn-ghost" onclick="copyContentText(\'' + id + '\')"><i class="fas fa-copy"></i> Copy</button></div>';
+
+  html += '<div class="fullview-content ' + fontClass + '" id="fullviewContentText">' + formatContentDisplay(item.content) + '</div>';
+
+  if (item.hashtags && item.hashtags.length > 0) {
+    html += '<div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px;">' + item.hashtags.map(h => '<span style="padding:4px 12px;background:var(--bg-surface-2);border-radius:var(--radius-full);font-size:12px;color:var(--primary);">' + esc(h) + '</span>').join('') + '</div>';
+  }
+
+  if (relatedChatItems.length > 0) {
+    html += '<div style="margin-top:16px;"><strong style="font-size:13px;">💬 Related Chats:</strong><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">' +
+      relatedChatItems.map(c => '<a href="' + escapeAttr(c.url) + '" target="_blank" class="btn btn-sm btn-secondary">' + esc(c.title) + '</a>').join('') + '</div></div>';
+  }
+  if (relatedRefItems.length > 0) {
+    html += '<div style="margin-top:12px;"><strong style="font-size:13px;">🎬 Related References:</strong><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">' +
+      relatedRefItems.map(r => '<a href="' + escapeAttr(r.url) + '" target="_blank" class="btn btn-sm btn-secondary">' + esc((r.notes||'').substring(0,40)) + '</a>').join('') + '</div></div>';
+  }
+
+  html += '<div class="fullview-footer">' +
+    '<button class="btn btn-secondary" onclick="copyContentText(\'' + id + '\')"><i class="fas fa-copy"></i> Copy Content</button>' +
+    '<button class="btn btn-secondary" onclick="closeFullview();openAddContent(\'' + id + '\')"><i class="fas fa-edit"></i> Edit</button>' +
+    '<select onchange="changeContentStatus(\'' + id + '\', this.value)" style="width:auto;padding:8px 32px 8px 12px;">' +
+      ['idea','scripting','filming','editing','ready','posted'].map(s => '<option value="' + s + '"' + (item.status === s ? ' selected' : '') + '>' + statusLabel(s) + '</option>').join('') +
+    '</select>' +
+    '<button class="btn btn-danger" onclick="deleteItem(\'' + id + '\', \'content\')"><i class="fas fa-trash"></i> Delete</button>' +
+  '</div>';
+
+  document.getElementById('fullviewBody').innerHTML = html;
+  overlay.classList.add('active');
+}
+
+function formatContentDisplay(text) {
+  let html = esc(text);
+  html = html.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color:var(--primary);text-decoration:underline;">$1</a>');
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/^[\s]*[-•]\s+(.+)/gm, '<div style="padding-left:20px;position:relative;"><span style="position:absolute;left:0;">•</span>$1</div>');
+  html = html.replace(/^[\s]*(\d+)\.\s+(.+)/gm, '<div style="padding-left:28px;position:relative;"><span style="position:absolute;left:0;font-weight:600;color:var(--primary);">$1.</span>$2</div>');
+  return html;
+}
+
+function adjustFontSize(dir) {
+  const el = document.getElementById('fullviewContentText');
+  if (!el) return;
+  const classes = ['font-sm', 'font-md', 'font-lg'];
+  let current = classes.findIndex(c => el.classList.contains(c));
+  if (current === -1) current = 1;
+  el.classList.remove(...classes);
+  current = Math.max(0, Math.min(2, current + dir));
+  el.classList.add(classes[current]);
+}
+
+function copyContentText(id) {
+  const content = getData('content');
+  const item = content.find(c => c.id === id);
+  if (!item) return;
+  navigator.clipboard.writeText(item.content).then(() => showToast('Content copied!', 'success')).catch(() => showToast('Failed to copy', 'error'));
+}
+
+function changeContentStatus(id, newStatus) {
+  const content = getData('content');
+  const item = content.find(c => c.id === id);
+  if (item) {
+    item.status = newStatus;
+    item.updatedAt = Date.now();
+    setData('content', content);
+    showToast('Status changed to ' + statusLabel(newStatus), 'success');
+    logActivity('<i class="fas fa-exchange-alt"></i>', '"' + item.title + '" → ' + statusLabel(newStatus), 'var(--status-' + newStatus + ')');
+  }
+}
+
+// =============================================
+// IDEA BANK
+// =============================================
+let ideaStatusFilter = 'all';
+
+function renderIdeas() {
+  const ideas = getData('ideas');
+  const statuses = ['all', 'new', 'working', 'used'];
+  document.getElementById('ideaStatusFilter').innerHTML = statuses.map(s =>
+    '<button class="filter-chip' + (ideaStatusFilter === s ? ' active' : '') + '" onclick="ideaStatusFilter=\'' + s + '\';renderIdeas();">' +
+    (s === 'all' ? 'All' : s === 'new' ? '🆕 New' : s === 'working' ? '🔄 Working' : '✅ Used') + '</button>'
+  ).join('');
+
+  let filtered = ideas;
+  if (ideaStatusFilter !== 'all') filtered = filtered.filter(i => i.status === ideaStatusFilter);
+
+  const container = document.getElementById('ideasContainer');
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">💡</div><h3>No ideas yet!</h3><p>Capture your first content idea above.</p></div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map((idea, i) => {
+    const statusColors = { 'new': 'var(--info)', working: 'var(--warning)', used: 'var(--success)' };
+    const statusLabels = { 'new': '🆕 New', working: '🔄 Working', used: '✅ Used' };
+    return '<div class="card idea-card stagger-in" style="animation-delay:' + (i*50) + 'ms;">' +
+      '<p class="idea-text">' + esc(idea.text) + '</p>' +
+      (idea.tags && idea.tags.length > 0 ? '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">' + idea.tags.map(t => '<span style="font-size:11px;padding:2px 8px;background:var(--bg-surface-2);border-radius:var(--radius-full);color:var(--text-muted);">' + esc(t) + '</span>').join('') + '</div>' : '') +
+      '<div class="idea-footer"><span style="font-size:12px;color:var(--text-muted);">' + timeAgo(idea.createdAt) + '</span>' +
+      '<div style="display:flex;gap:6px;align-items:center;">' +
+        '<button class="idea-status-btn" style="background:' + statusColors[idea.status] + '20;color:' + statusColors[idea.status] + ';" onclick="cycleIdeaStatus(\'' + idea.id + '\')">' + statusLabels[idea.status] + '</button>' +
+        '<button class="btn btn-sm btn-ghost" onclick="convertIdeaToContent(\'' + idea.id + '\')" title="Convert to Content"><i class="fas fa-arrow-right"></i></button>' +
+        dropdownMenu(idea.id, 'idea') +
+      '</div></div></div>';
+  }).join('');
+}
+
+function saveQuickIdea() {
+  const input = document.getElementById('quickIdeaInput');
+  const text = input.value.trim();
+  if (!text) { showToast('Enter an idea first!', 'error'); return; }
+  const ideas = getData('ideas');
+  ideas.unshift({ id: uuid(), text, tags: [], status: 'new', createdAt: Date.now(), convertedToContentId: null });
+  setData('ideas', ideas);
+  input.value = '';
+  showToast('Idea saved!', 'success');
+  logActivity('<i class="fas fa-lightbulb"></i>', 'New idea: ' + text.substring(0, 50) + '...', 'var(--cat-idea)');
+  bumpStreak();
+  renderIdeas();
+}
+
+function openAddIdea() {
+  navigateTo('ideas');
+  setTimeout(() => document.getElementById('quickIdeaInput').focus(), 100);
+}
+
+function cycleIdeaStatus(id) {
+  const ideas = getData('ideas');
+  const idea = ideas.find(i => i.id === id);
+  if (!idea) return;
+  const order = ['new', 'working', 'used'];
+  const idx = order.indexOf(idea.status);
+  idea.status = order[(idx + 1) % order.length];
+  setData('ideas', ideas);
+  renderIdeas();
+}
+
+function convertIdeaToContent(id) {
+  const ideas = getData('ideas');
+  const idea = ideas.find(i => i.id === id);
+  if (!idea) return;
+  idea.status = 'used';
+  idea.convertedToContentId = 'pending';
+  setData('ideas', ideas);
+  closeModal();
+  openAddContent();
+  setTimeout(() => {
+    const titleEl = document.getElementById('contentTitle');
+    const bodyEl = document.getElementById('contentBody');
+    if (titleEl) titleEl.value = idea.text.substring(0, 80);
+    if (bodyEl) bodyEl.value = idea.text;
+  }, 100);
+}
+
+function startSpeechToText() {
+  if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+    showToast('Speech recognition not supported in this browser', 'error');
+    return;
+  }
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = 'en-US';
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    document.getElementById('quickIdeaInput').value += transcript;
+    showToast('Voice input captured!', 'success');
+  };
+  recognition.onerror = (event) => {
+    showToast('Speech recognition error: ' + event.error, 'error');
+  };
+  recognition.start();
+  showToast('Listening... speak now', 'info');
+}
+
+// =============================================
+// VOICE NOTES
+// =============================================
+let mediaRecorder = null;
+let audioChunks = [];
+let recordingTimer = null;
+let recordingSeconds = 0;
+let isRecording = false;
+
+function renderVoiceNotes() {
+  const voices = getData('voice');
+  const container = document.getElementById('voiceContainer');
+  if (voices.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">🎤</div><h3>No voice notes yet</h3><p>Tap the record button above to capture an idea.</p></div>';
+    return;
+  }
+  container.innerHTML = voices.map((v, i) =>
+    '<div class="card stagger-in" style="animation-delay:' + (i*50) + 'ms;margin-bottom:12px;"><div class="voice-card">' +
+      '<button class="voice-play-btn" onclick="playVoiceNote(\'' + v.id + '\', this)"><i class="fas fa-play"></i></button>' +
+      '<div class="voice-info"><h4>' + esc(v.title) + '</h4><div class="voice-meta">Duration: ' + formatDuration(v.duration) + ' | ' + timeAgo(v.createdAt) + '</div>' +
+      (v.transcription ? '<p style="font-size:12px;color:var(--text-secondary);margin-top:4px;font-style:italic;">"' + esc(v.transcription) + '"</p>' : '') +
+      '</div><div class="voice-actions">' +
+      '<button class="btn btn-sm btn-ghost" onclick="convertVoiceToIdea(\'' + v.id + '\')" title="Convert to Idea"><i class="fas fa-lightbulb"></i></button>' +
+      '<button class="btn btn-sm btn-ghost" style="color:var(--error);" onclick="deleteItem(\'' + v.id + '\', \'voice\')" title="Delete"><i class="fas fa-trash"></i></button>' +
+      '</div></div></div>'
+  ).join('');
+}
+
+async function toggleRecording() {
+  if (isRecording) {
+    stopRecording();
+  } else {
+    await startRecording();
+  }
+}
+
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      stream.getTracks().forEach(t => t.stop());
+      const blob = new Blob(audioChunks, { type: 'audio/webm' });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const voices = getData('voice');
+        const noteNum = voices.length + 1;
+        voices.unshift({
+          id: uuid(),
+          title: 'Voice note ' + noteNum,
+          audioBase64: reader.result,
+          duration: recordingSeconds,
+          transcription: '',
+          createdAt: Date.now(),
+          convertedToIdeaId: null
+        });
+        setData('voice', voices);
+        showToast('Voice note saved!', 'success');
+        logActivity('<i class="fas fa-microphone"></i>', 'Recorded voice note ' + noteNum, 'var(--error)');
+        bumpStreak();
+        checkStorageSize();
+        renderVoiceNotes();
+      };
+      reader.readAsDataURL(blob);
+    };
+    mediaRecorder.start();
+    isRecording = true;
+    recordingSeconds = 0;
+    document.getElementById('recordBtn').classList.add('recording');
+    document.getElementById('recordBtn').innerHTML = '<i class="fas fa-stop"></i>';
+    document.getElementById('recordHint').textContent = 'Recording... Tap to stop';
+    recordingTimer = setInterval(() => {
+      recordingSeconds++;
+      document.getElementById('recordTimer').textContent = formatDuration(recordingSeconds);
+    }, 1000);
+  } catch (err) {
+    showToast('Microphone access denied or not available', 'error');
+  }
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+  }
+  isRecording = false;
+  clearInterval(recordingTimer);
+  document.getElementById('recordBtn').classList.remove('recording');
+  document.getElementById('recordBtn').innerHTML = '<i class="fas fa-microphone"></i>';
+  document.getElementById('recordHint').textContent = 'Tap to start recording';
+  document.getElementById('recordTimer').textContent = '0:00';
+}
+
+function playVoiceNote(id, btn) {
+  const voices = getData('voice');
+  const note = voices.find(v => v.id === id);
+  if (!note) return;
+  const audio = new Audio(note.audioBase64);
+  const icon = btn.querySelector('i');
+  icon.className = 'fas fa-pause';
+  audio.play();
+  audio.onended = () => { icon.className = 'fas fa-play'; };
+  audio.onpause = () => { icon.className = 'fas fa-play'; };
+  btn.onclick = () => {
+    if (audio.paused) { audio.play(); icon.className = 'fas fa-pause'; }
+    else { audio.pause(); icon.className = 'fas fa-play'; }
+  };
+}
+
+function convertVoiceToIdea(id) {
+  const voices = getData('voice');
+  const note = voices.find(v => v.id === id);
+  if (!note) return;
+  const ideas = getData('ideas');
+  const text = note.transcription || ('From voice note: ' + note.title);
+  ideas.unshift({ id: uuid(), text, tags: [], status: 'new', createdAt: Date.now(), convertedToContentId: null });
+  setData('ideas', ideas);
+  note.convertedToIdeaId = ideas[0].id;
+  setData('voice', voices);
+  showToast('Idea created from voice note!', 'success');
+  logActivity('<i class="fas fa-lightbulb"></i>', 'Created idea from voice note', 'var(--cat-idea)');
+}
+
+function formatDuration(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function checkStorageSize() {
+  let total = 0;
+  for (let key in localStorage) {
+    if (key.startsWith('creatorhub_')) {
+      total += localStorage.getItem(key).length * 2;
+    }
+  }
+  const mb = (total / 1024 / 1024).toFixed(2);
+  if (total > 4 * 1024 * 1024) {
+    showToast('Warning: Storage is getting large (' + mb + 'MB). Consider exporting and clearing old voice notes.', 'warning');
+  }
+}
+
+// =============================================
+// INSPIRATION BOARD
+// =============================================
+let inspirationCatFilter = 'all';
+
+function renderInspiration() {
+  const items = getData('inspiration');
+  const categories = ['all', 'thumbnail', 'layout', 'color', 'design', 'other'];
+
+  document.getElementById('inspirationCategoryFilter').innerHTML = categories.map(c =>
+    '<button class="filter-chip' + (inspirationCatFilter === c ? ' active' : '') + '" onclick="inspirationCatFilter=\'' + c + '\';renderInspiration();">' + (c === 'all' ? 'All' : categoryIcon(c) + ' ' + c) + '</button>'
+  ).join('');
+
+  let filtered = items;
+  if (inspirationCatFilter !== 'all') filtered = filtered.filter(i => i.category === inspirationCatFilter);
+
+  const container = document.getElementById('inspirationContainer');
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state" style="column-span:all;"><div class="empty-icon">📸</div><h3>No inspiration yet!</h3><p>Add your first screenshot or image.</p><button class="btn btn-primary" onclick="openAddInspiration()"><i class="fas fa-plus"></i> Add First</button></div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map((item, i) =>
+    '<div class="masonry-item stagger-in" style="animation-delay:' + (i*50) + 'ms;">' +
+      '<div class="card"><img src="' + escapeAttr(item.imageUrl) + '" alt="' + escapeAttr(item.title || '') + '" onclick="openImageViewer(\'' + escapeAttr(item.imageUrl) + '\')" onerror="this.style.display=\'none\'">' +
+      '<div class="masonry-info"><div style="display:flex;justify-content:space-between;align-items:start;"><div><h4>' + esc(item.title || 'Untitled') + '</h4><p>' + esc(item.notes || '') + '</p><span style="font-size:11px;color:var(--text-muted);">' + timeAgo(item.addedAt) + '</span></div>' + dropdownMenu(item.id, 'inspiration') + '</div></div></div></div>'
+  ).join('');
+}
+
+function openAddInspiration(editId) {
+  const existing = editId ? getData('inspiration').find(i => i.id === editId) : null;
+  const categories = ['thumbnail', 'layout', 'color', 'design', 'other'];
+  openModal(
+    '<div class="modal-header"><h2>' + (existing ? 'Edit Inspiration' : '📸 Add Screenshot') + '</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<div class="form-group"><label>Image URL</label><input type="url" id="inspImageUrl" placeholder="Paste image URL from web" value="' + escapeAttr(existing?.imageUrl || '') + '"></div>' +
+      '<div class="form-group"><label>Or Upload Image</label><input type="file" id="inspImageFile" accept="image/*" onchange="handleInspFileUpload(event)"></div>' +
+      '<div id="inspPreview" style="margin-bottom:16px;">' + (existing?.imageUrl ? '<img src="' + escapeAttr(existing.imageUrl) + '" style="max-width:100%;max-height:200px;border-radius:var(--radius-sm);">' : '') + '</div>' +
+      '<div class="form-group"><label>Title / Label</label><input type="text" id="inspTitle" placeholder="What is this?" value="' + escapeAttr(existing?.title || '') + '"></div>' +
+      '<div class="form-group"><label>Category</label><select id="inspCategory">' + categories.map(c => '<option value="' + c + '"' + (existing?.category === c ? ' selected' : '') + '>' + categoryIcon(c) + ' ' + c.charAt(0).toUpperCase() + c.slice(1) + '</option>').join('') + '</select></div>' +
+      '<div class="form-group"><label>Notes</label><textarea id="inspNotes" placeholder="Why you find this inspiring">' + esc(existing?.notes || '') + '</textarea></div>' +
+      '<div class="form-group"><label>Source URL (optional)</label><input type="url" id="inspSource" placeholder="Where you saw it" value="' + escapeAttr(existing?.sourceUrl || '') + '"></div>' +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveInspiration(\'' + (editId || '') + '\')"><i class="fas fa-save"></i> ' + (existing ? 'Update' : 'Save') + '</button></div>'
+  );
+}
+
+function handleInspFileUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById('inspImageUrl').value = e.target.result;
+    document.getElementById('inspPreview').innerHTML = '<img src="' + e.target.result + '" style="max-width:100%;max-height:200px;border-radius:var(--radius-sm);">';
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveInspiration(editId) {
+  const imageUrl = document.getElementById('inspImageUrl').value.trim();
+  if (!imageUrl) { showToast('Image is required', 'error'); return; }
+
+  const items = getData('inspiration');
+  const inspData = {
+    id: editId || uuid(),
+    imageUrl,
+    title: document.getElementById('inspTitle').value.trim(),
+    category: document.getElementById('inspCategory').value,
+    notes: document.getElementById('inspNotes').value.trim(),
+    sourceUrl: document.getElementById('inspSource').value.trim(),
+    addedAt: editId ? (items.find(i => i.id === editId)?.addedAt || Date.now()) : Date.now()
+  };
+
+  if (editId) {
+    const idx = items.findIndex(i => i.id === editId);
+    if (idx >= 0) items[idx] = inspData;
+  } else {
+    items.unshift(inspData);
+  }
+  setData('inspiration', items);
+  closeModal();
+  showToast(editId ? 'Updated!' : 'Inspiration saved!', 'success');
+  logActivity('<i class="fas fa-image"></i>', (editId ? 'Updated' : 'Added') + ' inspiration: ' + (inspData.title || 'Untitled'), 'var(--accent)');
+  bumpStreak();
+  renderCurrentPage();
+}
+
+function openImageViewer(url) {
+  document.getElementById('viewerImage').src = url;
+  document.getElementById('imageViewer').classList.add('active');
+}
+function closeImageViewer() {
+  document.getElementById('imageViewer').classList.remove('active');
+}
+
+// =============================================
+// SETTINGS
+// =============================================
+function renderSettings() {
+  const s = getSettings();
+  document.getElementById('settingsName').value = s.userName || 'Mateen Haider Minhas';
+  document.getElementById('settingsChannel').value = s.channelName || 'BYTE BY MATEEN';
+  document.getElementById('darkModeToggle').checked = s.theme === 'dark';
+  updateStorageInfo();
+}
+
+function updateStorageInfo() {
+  let total = 0;
+  const breakdown = {};
+  for (let key in localStorage) {
+    if (key.startsWith('creatorhub_')) {
+      const size = localStorage.getItem(key).length * 2;
+      total += size;
+      breakdown[key.replace('creatorhub_', '')] = size;
+    }
+  }
+  const el = document.getElementById('storageInfo');
+  el.innerHTML = '<strong>Total:</strong> ' + (total / 1024).toFixed(1) + ' KB (' + (total / 1024 / 1024).toFixed(2) + ' MB)<br>' +
+    Object.entries(breakdown).map(([k, v]) => k + ': ' + (v / 1024).toFixed(1) + ' KB').join('<br>');
+}
+
+function exportData() {
+  const data = {};
+  for (let key in localStorage) {
+    if (key.startsWith('creatorhub_')) {
+      data[key] = localStorage.getItem(key);
+    }
+  }
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'creatorhub-backup-' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Data exported successfully!', 'success');
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      showConfirm('Import Data', 'This will merge imported data with existing data. Continue?', () => {
+        for (let key in data) {
+          if (key.startsWith('creatorhub_')) {
+            localStorage.setItem(key, data[key]);
+          }
+        }
+        showToast('Data imported successfully!', 'success');
+        renderCurrentPage();
+      });
+    } catch { showToast('Invalid backup file', 'error'); }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function confirmClearData() {
+  showConfirm('Clear All Data', 'This will permanently delete ALL your data including chats, videos, ideas, voice notes, and content. This cannot be undone!', () => {
+    for (let key in localStorage) {
+      if (key.startsWith('creatorhub_')) {
+        localStorage.removeItem(key);
+      }
+    }
+    showToast('All data cleared', 'success');
+    renderCurrentPage();
+  });
+}
+
+// =============================================
+// GLOBAL SEARCH
+// =============================================
+function handleGlobalSearch(query) {
+  const resultsEl = document.getElementById('searchResults');
+  if (!query || query.length < 2) { resultsEl.classList.remove('active'); return; }
+
+  const q = query.toLowerCase();
+  const results = [];
+
+  getData('chats').forEach(c => {
+    if ((c.title || '').toLowerCase().includes(q) || (c.notes || '').toLowerCase().includes(q)) {
+      results.push({ type: 'Chat', icon: 'fa-comments', title: c.title, action: () => { navigateTo('chats'); } });
+    }
+  });
+  getData('references').forEach(r => {
+    if ((r.notes || '').toLowerCase().includes(q) || (r.url || '').toLowerCase().includes(q)) {
+      results.push({ type: 'Reference', icon: 'fa-film', title: (r.notes || r.url).substring(0, 60), action: () => { navigateTo('videos'); } });
+    }
+  });
+  getData('content').forEach(c => {
+    if ((c.title || '').toLowerCase().includes(q) || (c.content || '').toLowerCase().includes(q)) {
+      results.push({ type: 'Content', icon: 'fa-file-alt', title: c.title, action: () => { viewContent(c.id); } });
+    }
+  });
+  getData('ideas').forEach(i => {
+    if ((i.text || '').toLowerCase().includes(q)) {
+      results.push({ type: 'Idea', icon: 'fa-lightbulb', title: i.text.substring(0, 60), action: () => { navigateTo('ideas'); } });
+    }
+  });
+  getData('voice').forEach(v => {
+    if ((v.title || '').toLowerCase().includes(q) || (v.transcription || '').toLowerCase().includes(q)) {
+      results.push({ type: 'Voice', icon: 'fa-microphone', title: v.title, action: () => { navigateTo('voice'); } });
+    }
+  });
+  getData('inspiration').forEach(i => {
+    if ((i.title || '').toLowerCase().includes(q) || (i.notes || '').toLowerCase().includes(q)) {
+      results.push({ type: 'Inspiration', icon: 'fa-image', title: (i.title || i.notes || '').substring(0, 60), action: () => { navigateTo('inspiration'); } });
+    }
+  });
+  getData('weekly_plans').forEach(p => {
+    if ((p.title || '').toLowerCase().includes(q) || (p.content || '').toLowerCase().includes(q) || (p.weekLabel || '').toLowerCase().includes(q)) {
+      results.push({ type: 'Weekly Plan', icon: 'fa-clipboard-list', title: p.weekLabel + (p.title ? ' - ' + p.title : ''), action: () => { setCalendarView('plan'); navigateTo('calendar'); } });
+    }
+  });
+
+  if (results.length === 0) {
+    resultsEl.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-muted);font-size:13px;">No results found</div>';
+  } else {
+    const grouped = {};
+    results.forEach(r => { if (!grouped[r.type]) grouped[r.type] = []; grouped[r.type].push(r); });
+    let html = '';
+    for (let type in grouped) {
+      html += '<div class="search-group-title">' + type + 's (' + grouped[type].length + ')</div>';
+      grouped[type].slice(0, 5).forEach((r, idx) => {
+        html += '<div class="search-result-item" onclick="searchResultClick(' + idx + ', \'' + type + '\')"><i class="fas ' + r.icon + '" style="color:var(--primary);width:20px;"></i><span>' + esc(r.title) + '</span></div>';
+      });
+    }
+    resultsEl.innerHTML = html;
+    window._searchResults = results;
+    window._searchGrouped = grouped;
+  }
+  resultsEl.classList.add('active');
+}
+
+function searchResultClick(idx, type) {
+  const grouped = window._searchGrouped;
+  if (grouped && grouped[type] && grouped[type][idx]) {
+    grouped[type][idx].action();
+  }
+  document.getElementById('searchResults').classList.remove('active');
+  document.getElementById('globalSearch').value = '';
+}
+
+// =============================================
+// EDIT / DELETE HELPERS
+// =============================================
+function editItem(id, type) {
+  switch(type) {
+    case 'chat': openAddChat(id); break;
+    case 'reference': openAddVideo(id); break;
+    case 'content': openAddContent(id); break;
+    case 'idea': editIdeaModal(id); break;
+    case 'voice': editVoiceTitle(id); break;
+    case 'inspiration': openAddInspiration(id); break;
+  }
+}
+
+function deleteItem(id, type) {
+  showConfirm('Delete Item', 'Are you sure you want to delete this item? This cannot be undone.', () => {
+    const keyMap = { chat: 'chats', reference: 'references', content: 'content', idea: 'ideas', voice: 'voice', inspiration: 'inspiration' };
+    const key = keyMap[type];
+    if (!key) return;
+    let items = getData(key);
+    items = items.filter(i => i.id !== id);
+    setData(key, items);
+    showToast('Item deleted', 'success');
+    closeFullview();
+    renderCurrentPage();
+  });
+}
+
+function editIdeaModal(id) {
+  const ideas = getData('ideas');
+  const idea = ideas.find(i => i.id === id);
+  if (!idea) return;
+  openModal(
+    '<div class="modal-header"><h2>Edit Idea</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<div class="form-group"><label>Idea</label><textarea id="editIdeaText" rows="5">' + esc(idea.text) + '</textarea></div>' +
+      '<div class="form-group"><label>Tags (comma-separated)</label><input type="text" id="editIdeaTags" value="' + escapeAttr((idea.tags || []).join(', ')) + '"></div>' +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditIdea(\'' + id + '\')">Save</button></div>'
+  );
+}
+
+function saveEditIdea(id) {
+  const ideas = getData('ideas');
+  const idea = ideas.find(i => i.id === id);
+  if (!idea) return;
+  idea.text = document.getElementById('editIdeaText').value.trim();
+  idea.tags = document.getElementById('editIdeaTags').value.split(',').map(t => t.trim()).filter(Boolean);
+  setData('ideas', ideas);
+  closeModal();
+  showToast('Idea updated!', 'success');
+  renderIdeas();
+}
+
+function editVoiceTitle(id) {
+  const voices = getData('voice');
+  const note = voices.find(v => v.id === id);
+  if (!note) return;
+  openModal(
+    '<div class="modal-header"><h2>Edit Voice Note</h2><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>' +
+    '<div class="modal-body">' +
+      '<div class="form-group"><label>Title</label><input type="text" id="editVoiceTitle" value="' + escapeAttr(note.title) + '"></div>' +
+      '<div class="form-group"><label>Transcription</label><textarea id="editVoiceTrans" rows="4" placeholder="Add transcription...">' + esc(note.transcription || '') + '</textarea></div>' +
+    '</div>' +
+    '<div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEditVoice(\'' + id + '\')">Save</button></div>'
+  );
+}
+
+function saveEditVoice(id) {
+  const voices = getData('voice');
+  const note = voices.find(v => v.id === id);
+  if (!note) return;
+  note.title = document.getElementById('editVoiceTitle').value.trim() || note.title;
+  note.transcription = document.getElementById('editVoiceTrans').value.trim();
+  setData('voice', voices);
+  closeModal();
+  showToast('Voice note updated!', 'success');
+  renderVoiceNotes();
+}
+
+// =============================================
+// HTML ESCAPE HELPERS
+// =============================================
+function esc(str) {
+  if (!str) return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+function escapeAttr(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// =============================================
+// KEYBOARD SHORTCUTS
+// =============================================
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('globalSearch').focus();
+  }
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+    e.preventDefault();
+    document.getElementById('globalSearch').focus();
+  }
+  if (e.key === 'Escape') {
+    closeModal();
+    closeFullview();
+    closeConfirm();
+    closeImageViewer();
+    document.getElementById('searchResults').classList.remove('active');
+  }
+});
+
+// =============================================
+// PWA REGISTRATION
+// =============================================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+
+// =============================================
+// INITIALIZATION
+// =============================================
+function init() {
+  const settings = getSettings();
+  if (settings.theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('themeToggle').innerHTML = '<i class="fas fa-sun"></i>';
+    document.getElementById('darkModeToggle').checked = true;
+  }
+  chatViewSize = settings.chatViewSize || 'large';
+  updateStreak();
+  renderDashboard();
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
